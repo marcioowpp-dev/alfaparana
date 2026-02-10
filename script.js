@@ -1,4 +1,4 @@
-// Botão Ver Mais
+// Abrir fotos ocultas
 document.getElementById('btn-ver-mais')?.addEventListener('click', function() {
     const hiddenItems = document.querySelectorAll('.feed-item.hidden');
     for (let i = 0; i < 6 && i < hiddenItems.length; i++) {
@@ -9,7 +9,7 @@ document.getElementById('btn-ver-mais')?.addEventListener('click', function() {
     }
 });
 
-// Sistema de Zoom
+// Zoom da Galeria
 function openZoom(el) {
     const overlay = document.getElementById('zoom-overlay');
     const img = document.getElementById('zoom-img');

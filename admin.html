@@ -5,208 +5,94 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora Alfa Paraná 2026</title>
     <style>
-        :root {
-            --primary-color: #facc15;
-            --bg-color: #121212;
-            --card-bg: #1e1e1e;
-            --text-main: #ffffff;
-            --input-bg: #2d2d2d;
-        }
-
-        body { font-family: 'Segoe UI', system-ui, sans-serif; background-color: var(--bg-color); color: var(--text-main); display: flex; flex-direction: column; align-items: center; padding: 20px; margin: 0; }
-        
-        .container { background: var(--card-bg); padding: 1.5rem; border-radius: 16px; width: 100%; max-width: 500px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); border: 1px solid #333; box-sizing: border-box; }
-        
-        h2 { text-align: center; color: var(--primary-color); margin-top: 0; text-transform: uppercase; font-size: 1.5rem; letter-spacing: 1px; margin-bottom: 1.5rem; }
-        
-        .form-group { margin-bottom: 1rem; }
-        label { display: block; margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 600; color: #bbb; }
-        
-        select, input { width: 100%; padding: 12px; border: 2px solid #444; border-radius: 8px; box-sizing: border-box; background: var(--input-bg); color: white; font-size: 16px; outline: none; }
-        select:focus, input:focus { border-color: var(--primary-color); }
-
-        .mode-selector, .unit-selector { display: flex; gap: 8px; background: #2d2d2d; padding: 5px; border-radius: 10px; margin-bottom: 15px; border: 1px solid #444; }
-        .mode-selector label, .unit-selector label { flex: 1; text-align: center; cursor: pointer; margin-bottom: 0; }
-        .mode-selector input, .unit-selector input { display: none; }
-        .mode-selector span, .unit-selector span { display: block; padding: 10px; border-radius: 8px; font-weight: bold; font-size: 0.85rem; color: #888; transition: 0.2s; }
-        .mode-selector input:checked + span, .unit-selector input:checked + span { background: var(--primary-color); color: #000; }
-
-        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 1rem; }
-
+        :root { --primary: #facc15; --bg: #121212; --card: #1e1e1e; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: white; display: flex; flex-direction: column; align-items: center; padding: 20px; margin: 0; }
+        .container { background: var(--card); padding: 20px; border-radius: 16px; width: 100%; max-width: 500px; border: 1px solid #333; }
+        h2 { text-align: center; color: var(--primary); text-transform: uppercase; margin-bottom: 20px; }
+        select, input { width: 100%; padding: 12px; margin-bottom: 12px; background: #2d2d2d; color: white; border: 1px solid #444; border-radius: 8px; box-sizing: border-box; }
+        .unit-selector, .mode-selector { display: flex; gap: 8px; background: #2d2d2d; padding: 5px; border-radius: 10px; margin-bottom: 15px; }
+        .unit-selector label, .mode-selector label { flex: 1; text-align: center; cursor: pointer; padding: 10px; border-radius: 8px; font-weight: bold; font-size: 0.85rem; }
+        .unit-selector input, .mode-selector input { display: none; }
+        .unit-selector input:checked + span, .mode-selector input:checked + span { background: var(--primary); color: #000; display: block; border-radius: 6px; padding: 5px; }
         .checkbox-card { background: #262626; padding: 14px; border-radius: 10px; margin-bottom: 10px; display: flex; align-items: center; gap: 12px; cursor: pointer; border: 1px solid #333; }
-        .checkbox-card input { width: auto; transform: scale(1.3); }
-
-        .mao-obra-box { display: none; margin-top: 5px; margin-bottom: 15px; }
-
-        .btn-add { width: 100%; background: var(--primary-color); color: #000; padding: 18px; border: none; border-radius: 10px; font-weight: bold; font-size: 1.1rem; cursor: pointer; text-transform: uppercase; margin-top: 5px; transition: 0.2s; }
-        
-        .resumo-container { width: 100%; max-width: 500px; background: var(--card-bg); border-radius: 16px; padding: 1.5rem; margin-top: 20px; border: 1px solid #333; box-sizing: border-box; }
-        .item-lista { border-bottom: 1px solid #333; padding: 15px 0; display: flex; justify-content: space-between; align-items: center; }
-        .btn-remover { color: #ff4444; background: none; border: none; cursor: pointer; font-size: 1.3rem; }
-
-        .total-geral { margin-top: 20px; padding: 20px; background: #000; border-radius: 12px; text-align: center; border: 2px dashed var(--primary-color); }
-        .total-geral h3 { color: var(--primary-color); font-size: 2.2rem; margin: 5px 0 0 0; }
-
-        .btn-limpar { background: none; color: #ff4444; border: none; width: 100%; margin-top: 15px; cursor: pointer; font-size: 0.85rem; text-decoration: underline; }
-        .back-link { margin-top: 20px; color: #666; text-decoration: none; font-size: 0.9rem; }
+        .btn-add { width: 100%; background: var(--primary); color: #000; padding: 18px; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; text-transform: uppercase; }
+        .resumo-container { width: 100%; max-width: 500px; background: var(--card); border-radius: 16px; padding: 20px; margin-top: 20px; border: 1px solid #333; }
+        .item-lista { border-bottom: 1px solid #333; padding: 10px 0; display: flex; justify-content: space-between; align-items: center; }
+        .total-geral { margin-top: 20px; padding: 15px; background: #000; border-radius: 12px; text-align: center; border: 2px dashed var(--primary); }
+        .total-geral h3 { color: var(--primary); font-size: 2rem; margin: 5px 0; }
+        .back-link { margin-top: 20px; color: #666; text-decoration: none; }
     </style>
 </head>
 <body>
-
 <div class="container">
     <h2>Alfa Paraná</h2>
-    
-    <div class="form-group">
-        <label>Produto</label>
-        <select id="produto">
-            <optgroup label="Lonas">
-                <option value="Lona Frontlight 440g S/ Acab.">Lona Front 440g Sem Acab. (R$ 64)</option>
-                <option value="Lona Frontlight 440g C/ Acab.">Lona Front 440g Com Acab. (R$ 74)</option>
-                <option value="Lona Backlight 440g S/ Acab.">Lona Back 440g Sem Acab. (R$ 88)</option>
-                <option value="Lona Backlight 440g C/ Acab.">Lona Back 440g Com Acab. (R$ 98)</option>
-            </optgroup>
-            <optgroup label="Adesivos">
-                <option value="Adesivo Promo">Adesivo Promo (R$ 64)</option>
-                <option value="Adesivo Perfurado">Adesivo Perfurado (R$ 84)</option>
-                <option value="Adesivo Blackout">Adesivo Blackout (R$ 82)</option>
-                <option value="Adesivo Premium (Oracal/3M)">Adesivo Premium (R$ 140)</option>
-                <option value="Adesivo Promo + Corte">Adesivo Promo + Corte (R$ 94)</option>
-                <option value="Adesivo Promo + Laminação">Adesivo Promo + Laminação (R$ 110)</option>
-                <option value="Adesivo Promo + Lam. + Corte">Adesivo Promo + Lam. + Corte (R$ 126)</option>
-                <option value="Adesivo Blackout + Laminação">Adesivo Blackout + Laminação (R$ 106)</option>
-                <option value="Adesivo Premium + Laminação">Adesivo Premium + Laminação (R$ 240)</option>
-            </optgroup>
-        </select>
-    </div>
-
+    <select id="produto">
+        <optgroup label="Lonas">
+            <option value="Lona Frontlight 440g S/ Acab.">Lona Front 440g Sem Acab. (R$ 64)</option>
+            <option value="Lona Frontlight 440g C/ Acab.">Lona Front 440g Com Acab. (R$ 74)</option>
+        </optgroup>
+        <optgroup label="Adesivos">
+            <option value="Adesivo Promo">Adesivo Promo (R$ 64)</option>
+            <option value="Adesivo Perfurado">Adesivo Perfurado (R$ 84)</option>
+            <option value="Adesivo Premium">Adesivo Premium (R$ 140)</option>
+        </optgroup>
+    </select>
     <div class="unit-selector">
         <label><input type="radio" name="unit" value="cm" checked> <span>cm</span></label>
         <label><input type="radio" name="unit" value="m"> <span>m</span></label>
     </div>
-
-    <div class="grid-3">
-        <div class="form-group"><label>Largura</label><input type="number" id="largura" step="0.01"></div>
-        <div class="form-group"><label>Altura</label><input type="number" id="altura" step="0.01"></div>
-        <div class="form-group"><label>Qtd</label><input type="number" id="quantidade" value="1"></div>
+    <div style="display:flex; gap:10px;">
+        <input type="number" id="largura" placeholder="Largura">
+        <input type="number" id="altura" placeholder="Altura">
+        <input type="number" id="quantidade" value="1" style="width:70px">
     </div>
-
-    <label class="checkbox-card">
-        <input type="checkbox" id="checkFachada"> 🏗️ Estrutura de Metalon
-    </label>
-
-    <label class="checkbox-card">
-        <input type="checkbox" id="checkMaoObra" onchange="toggleMaoObra()"> 👷 Incluir Mão de Obra
-    </label>
-    
-    <div id="campoMaoObra" class="mao-obra-box">
-        <input type="number" id="valorMaoObra" placeholder="Valor manual (R$)">
-    </div>
-
+    <label class="checkbox-card"><input type="checkbox" id="checkFachada"> 🏗️ Estrutura Metalon</label>
+    <label class="checkbox-card"><input type="checkbox" id="checkMaoObra" onchange="document.getElementById('vM').style.display=this.checked?'block':'none'"> 👷 Incluir Mão de Obra</label>
+    <input type="number" id="vM" placeholder="Valor Mão de Obra (R$)" style="display:none">
     <button class="btn-add" onclick="adicionarItem()">Adicionar ao Pedido</button>
 </div>
-
-<div class="resumo-container" id="resumo-box" style="display: none;">
-    <label style="text-align: center; margin-bottom: 8px; display: block;">Modo de Cálculo (Coleta R$ 80)</label>
+<div class="resumo-container" id="resumo-box" style="display:none">
     <div class="mode-selector">
-        <label><input type="radio" name="distMode" value="total" checked onchange="atualizarInterface()"> <span>Somar em Todos</span></label>
-        <label><input type="radio" name="distMode" value="split" onchange="changeDistMode()"> <span>Diluir nos Itens</span></label>
+        <label><input type="radio" name="distMode" value="total" checked onchange="atualizarInterface()"> <span>Somar Coleta (R$80)</span></label>
+        <label><input type="radio" name="distMode" value="split" onchange="atualizarInterface()"> <span>Diluir Coleta</span></label>
     </div>
-
     <div id="lista-itens"></div>
-    
-    <div class="total-geral">
-        <span>VALOR TOTAL</span>
-        <h3 id="valor-total-geral">R$ 0,00</h3>
-    </div>
-    
-    <button class="btn-limpar" onclick="limparPedido()">Limpar Tudo</button>
+    <div class="total-geral"><span>VALOR TOTAL</span><h3 id="valor-total-geral">R$ 0,00</h3></div>
+    <button onclick="location.reload()" style="background:none; color:red; border:none; width:100%; cursor:pointer; text-decoration: underline; margin-top:10px">Limpar Tudo</button>
 </div>
-
 <a href="index.html" class="back-link">← Voltar para o Site</a>
-
 <script>
     const TAXA_COLETA = 80.00;
-    const PRECO_BARRA_METALON = 115.00;
-    const TABELA_PRECOS = {
-        "Lona Frontlight 440g S/ Acab.": 64, "Lona Frontlight 440g C/ Acab.": 74,
-        "Lona Backlight 440g S/ Acab.": 88, "Lona Backlight 440g C/ Acab.": 98,
-        "Adesivo Promo": 64, "Adesivo Perfurado": 84, "Adesivo Blackout": 82,
-        "Adesivo Premium (Oracal/3M)": 140, "Adesivo Promo + Corte": 94,
-        "Adesivo Promo + Laminação": 110, "Adesivo Promo + Lam. + Corte": 126,
-        "Adesivo Blackout + Laminação": 106, "Adesivo Premium + Laminação": 240
-    };
-
-    let itensPedido = [];
-
-    function toggleMaoObra() {
-        document.getElementById('campoMaoObra').style.display = document.getElementById('checkMaoObra').checked ? 'block' : 'none';
-    }
-
+    const TABELA = {"Lona Frontlight 440g S/ Acab.": 64, "Lona Frontlight 440g C/ Acab.": 74, "Adesivo Promo": 64, "Adesivo Perfurado": 84, "Adesivo Premium": 140};
+    let itens = [];
     function adicionarItem() {
-        const prod = document.getElementById('produto').value;
-        const unit = document.querySelector('input[name="unit"]:checked').value;
-        let largI = parseFloat(document.getElementById('largura').value) || 0;
-        let altI = parseFloat(document.getElementById('altura').value) || 0;
-        const qtd = parseInt(document.getElementById('quantidade').value) || 1;
-        const eFachada = document.getElementById('checkFachada').checked;
-        const vMaoObra = parseFloat(document.getElementById('valorMaoObra').value) || 0;
-
-        if (largI <= 0 || altI <= 0) return alert("Preencha as medidas.");
-
-        let largM = (unit === "cm") ? largI / 100 : largI;
-        let altM = (unit === "cm") ? altI / 100 : altI;
-        let valorBase = (largM * altM) * TABELA_PRECOS[prod] * qtd;
-        let barras = eFachada ? Math.ceil(((largM + altM) * 2) * qtd / 6) : 0;
-
-        itensPedido.push({ 
-            prod, 
-            larg: largI, 
-            alt: altI, 
-            unit, 
-            valorBase: valorBase + (barras * PRECO_BARRA_METALON) + vMaoObra, 
-            qtd 
-        });
-        
-        document.getElementById('largura').value = "";
-        document.getElementById('altura').value = "";
-        document.getElementById('checkFachada').checked = false;
-        document.getElementById('checkMaoObra').checked = false;
-        document.getElementById('valorMaoObra').value = "";
-        toggleMaoObra();
-        
+        let p = document.getElementById('produto').value;
+        let u = document.querySelector('input[name="unit"]:checked').value;
+        let l = parseFloat(document.getElementById('largura').value) || 0;
+        let a = parseFloat(document.getElementById('altura').value) || 0;
+        let q = parseInt(document.getElementById('quantidade').value) || 1;
+        let eF = document.getElementById('checkFachada').checked;
+        let vM = parseFloat(document.getElementById('vM').value) || 0;
+        if(l<=0 || a<=0) return alert("Medidas inválidas");
+        let lM = (u==="cm") ? l/100 : l;
+        let aM = (u==="cm") ? a/100 : a;
+        let val = (lM * aM * TABELA[p] * q) + vM + (eF ? Math.ceil(((lM+aM)*2)*q/6)*115 : 0);
+        itens.push({p, l, a, u, val, q});
         atualizarInterface();
     }
-
-    function changeDistMode() {
-        atualizarInterface();
-    }
-
     function atualizarInterface() {
-        const listaDiv = document.getElementById('lista-itens');
-        const mode = document.querySelector('input[name="distMode"]:checked').value;
-        let totalAcumulado = 0;
-        listaDiv.innerHTML = "";
-        let diluicao = TAXA_COLETA / (itensPedido.length || 1);
-
-        itensPedido.forEach((item, i) => {
-            let valorExibicao = (mode === "total") ? (item.valorBase + TAXA_COLETA) : (item.valorBase + diluicao);
-            totalAcumulado += valorExibicao;
-            listaDiv.innerHTML += `
-                <div class="item-lista">
-                    <div>
-                        <b>${item.qtd}x ${item.prod}</b><br>
-                        <small>${item.larg}${item.unit} x ${item.alt}${item.unit}</small><br>
-                        <b>R$ ${valorExibicao.toLocaleString('pt-br',{minimumFractionDigits:2})}</b>
-                    </div>
-                    <button class="btn-remover" onclick="removerItem(${i})">✕</button>
-                </div>`;
+        let div = document.getElementById('lista-itens');
+        let mode = document.querySelector('input[name="distMode"]:checked').value;
+        let total = 0; div.innerHTML = "";
+        let diluicao = TAXA_COLETA / (itens.length || 1);
+        itens.forEach((item, i) => {
+            let vEx = (mode === "total") ? (item.val + TAXA_COLETA) : (item.val + diluicao);
+            total += vEx;
+            div.innerHTML += `<div class="item-lista"><div><b>${item.q}x ${item.p}</b><br><small>${item.l}${item.u} x ${item.a}${item.u}</small></div><b>R$ ${vEx.toFixed(2)}</b></div>`;
         });
-        document.getElementById('resumo-box').style.display = itensPedido.length > 0 ? "block" : "none";
-        document.getElementById('valor-total-geral').innerText = `R$ ${totalAcumulado.toLocaleString('pt-br',{minimumFractionDigits:2})}`;
+        document.getElementById('resumo-box').style.display = itens.length ? "block" : "none";
+        document.getElementById('valor-total-geral').innerText = "R$ " + total.toFixed(2);
     }
-
-    function removerItem(i) { itensPedido.splice(i, 1); atualizarInterface(); }
-    function limparPedido() { if(confirm("Limpar orçamento?")) { itensPedido = []; atualizarInterface(); } }
 </script>
 </body>
 </html>
