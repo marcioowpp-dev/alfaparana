@@ -2,290 +2,41 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel ADM | Alfa Paraná</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>ADM | Login Alfa Paraná</title>
     <style>
-        :root {
-            --primary-blue: #001a4d;
-            --accent-cyan: #00d2ff;
-            --bg-dark: #0b1322;
-            --card-glass: rgba(255, 255, 255, 0.05);
-            --text-white: #ffffff;
-        }
-
-        body { 
-            font-family: 'Inter', system-ui, -apple-system, sans-serif; 
-            background: radial-gradient(circle at top right, #1a2a4a, var(--bg-dark));
-            color: var(--text-white); 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            padding: 20px; 
-            margin: 0;
-            min-height: 100vh;
-        }
-
-        .container { 
-            background: var(--card-glass); 
-            backdrop-filter: blur(10px);
-            padding: 2rem; 
-            border-radius: 24px; 
-            width: 100%; 
-            max-width: 550px; 
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5); 
-            border: 1px solid rgba(255,255,255,0.1); 
-            box-sizing: border-box; 
-        }
-
-        h2 { 
-            text-align: center; 
-            color: var(--accent-cyan); 
-            margin-top: 0; 
-            text-transform: uppercase; 
-            font-size: 1.4rem; 
-            letter-spacing: 2px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .form-group { margin-bottom: 1.2rem; }
-        label { display: block; margin-bottom: 0.6rem; font-size: 0.85rem; font-weight: 600; color: var(--accent-cyan); text-transform: uppercase; }
-
-        select, input { 
-            width: 100%; 
-            padding: 14px; 
-            border: 1px solid rgba(255,255,255,0.2); 
-            border-radius: 12px; 
-            box-sizing: border-box; 
-            background: rgba(0,0,0,0.3); 
-            color: white; 
-            font-size: 16px; 
-            outline: none; 
-            transition: 0.3s;
-        }
-
-        select:focus, input:focus { border-color: var(--accent-cyan); box-shadow: 0 0 10px rgba(0, 210, 255, 0.3); }
-
-        .unit-selector { display: flex; gap: 8px; background: rgba(0,0,0,0.4); padding: 5px; border-radius: 12px; margin-bottom: 20px; }
-        .unit-selector label { flex: 1; text-align: center; cursor: pointer; margin-bottom: 0; }
-        .unit-selector input { display: none; }
-        .unit-selector span { display: block; padding: 10px; border-radius: 8px; font-weight: bold; color: #666; transition: 0.3s; }
-        .unit-selector input:checked + span { background: var(--accent-cyan); color: var(--primary-blue); }
-
-        .grid-3 { display: grid; grid-template-columns: 1.2fr 1.2fr 0.8fr; gap: 15px; }
-
-        .checkbox-card { 
-            background: rgba(255,255,255,0.03); 
-            padding: 15px; 
-            border-radius: 12px; 
-            margin-bottom: 12px; 
-            display: flex; 
-            align-items: center; 
-            gap: 12px; 
-            cursor: pointer; 
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: 0.3s;
-        }
-        .checkbox-card:hover { background: rgba(255,255,255,0.08); }
-        .checkbox-card input { width: auto; accent-color: var(--accent-cyan); }
-
-        .btn-add { 
-            width: 100%; 
-            background: linear-gradient(135deg, var(--accent-cyan), #00a8cc); 
-            color: var(--primary-blue); 
-            padding: 18px; 
-            border: none; 
-            border-radius: 12px; 
-            font-weight: 800; 
-            font-size: 1rem; 
-            cursor: pointer; 
-            text-transform: uppercase; 
-            box-shadow: 0 10px 20px rgba(0, 210, 255, 0.2);
-            transition: 0.3s;
-        }
-        .btn-add:hover { transform: translateY(-2px); filter: brightness(1.1); }
-
-        /* RESUMO */
-        .resumo-container { 
-            width: 100%; 
-            max-width: 550px; 
-            background: var(--card-glass); 
-            backdrop-filter: blur(10px);
-            border-radius: 24px; 
-            padding: 2rem; 
-            margin-top: 25px; 
-            border: 1px solid rgba(255,255,255,0.1); 
-            box-sizing: border-box; 
-        }
-
-        .item-lista { 
-            border-bottom: 1px solid rgba(255,255,255,0.1); 
-            padding: 18px 0; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-        }
-
-        .total-geral { 
-            margin-top: 25px; 
-            padding: 25px; 
-            background: rgba(0, 210, 255, 0.1); 
-            border-radius: 16px; 
-            text-align: center; 
-            border: 1px solid var(--accent-cyan); 
-        }
-        .total-geral h3 { color: var(--accent-cyan); font-size: 2.4rem; margin: 10px 0 0; text-shadow: 0 0 15px rgba(0, 210, 255, 0.3); }
-
-        .btn-limpar { background: none; color: #ff5555; border: none; width: 100%; margin-top: 20px; cursor: pointer; font-size: 0.8rem; text-decoration: underline; opacity: 0.7; }
-
-        .back-link { margin-top: 30px; color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.9rem; }
-        .back-link:hover { color: var(--accent-cyan); }
+        body { background: #001a4d; font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; color: white; }
+        .login-box { background: rgba(255,255,255,0.1); padding: 40px; border-radius: 20px; backdrop-filter: blur(10px); text-align: center; border: 1px solid rgba(255,255,255,0.2); }
+        input { width: 100%; padding: 15px; margin: 20px 0; border-radius: 10px; border: none; font-size: 18px; text-align: center; }
+        .btn-login { background: #00d2ff; color: #001a4d; padding: 15px 40px; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; }
+        #calc-content { display: none; } /* Escondido até acertar a senha */
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h2><i class="fas fa-calculator"></i> Alfa Paraná</h2>
-    
-    <div class="form-group">
-        <label>Produto Selecionado</label>
-        <select id="produto">
-            <optgroup label="Lonas">
-                <option value="Lona Frontlight 440g S/ Acab.">Lona Front 440g Sem Acab. (R$ 64)</option>
-                <option value="Lona Frontlight 440g C/ Acab.">Lona Front 440g Com Acab. (R$ 74)</option>
-                <option value="Lona Backlight 440g S/ Acab.">Lona Back 440g Sem Acab. (R$ 88)</option>
-                <option value="Lona Backlight 440g C/ Acab.">Lona Back 440g Com Acab. (R$ 98)</option>
-            </optgroup>
-            <optgroup label="Adesivos">
-                <option value="Adesivo Promo">Adesivo Promo (R$ 64)</option>
-                <option value="Adesivo Perfurado">Adesivo Perfurado (R$ 84)</option>
-                <option value="Adesivo Blackout">Adesivo Blackout (R$ 82)</option>
-                <option value="Adesivo Premium (Oracal/3M)">Adesivo Premium (R$ 140)</option>
-                <option value="Adesivo Promo + Corte">Adesivo Promo + Corte (R$ 94)</option>
-                <option value="Adesivo Promo + Laminação">Adesivo Promo + Laminação (R$ 110)</option>
-                <option value="Adesivo Promo + Lam. + Corte">Adesivo Promo + Lam. + Corte (R$ 126)</option>
-                <option value="Adesivo Blackout + Laminação">Adesivo Blackout + Laminação (R$ 106)</option>
-                <option value="Adesivo Premium + Laminação">Adesivo Premium + Laminação (R$ 240)</option>
-            </optgroup>
-        </select>
+    <div id="login-screen" class="login-box">
+        <img src="https://i.ibb.co/FLmLhR75/ALFA-PARANA-29.png" style="height: 60px; filter: brightness(0) invert(1);">
+        <h2>ACESSO RESTRITO</h2>
+        <input type="password" id="senha" placeholder="Digite a senha">
+        <button class="btn-login" onclick="verificar()">ENTRAR</button>
     </div>
 
-    <div class="unit-selector">
-        <label><input type="radio" name="unit" value="cm" checked> <span>cm</span></label>
-        <label><input type="radio" name="unit" value="m"> <span>m</span></label>
+    <div id="calc-content">
+        <h1 style="text-align: center;">Calculadora Liberada</h1>
+        <p style="text-align: center;">(Insira o código da calculadora profissional aqui)</p>
+        <button onclick="location.reload()" style="color: red; cursor:pointer">SAIR</button>
     </div>
 
-    <div class="grid-3">
-        <div class="form-group"><label>Largura</label><input type="number" id="largura" step="0.01"></div>
-        <div class="form-group"><label>Altura</label><input type="number" id="altura" step="0.01"></div>
-        <div class="form-group"><label>Qtd</label><input type="number" id="quantidade" value="1"></div>
-    </div>
-
-    <label class="checkbox-card">
-        <input type="checkbox" id="checkFachada"> 🏗️ Estrutura de Metalon
-    </label>
-
-    <label class="checkbox-card">
-        <input type="checkbox" id="checkMaoObra" onchange="toggleMaoObra()"> 👷 Incluir Mão de Obra
-    </label>
-    
-    <div id="campoMaoObra" style="display: none; margin-bottom: 20px;">
-        <input type="number" id="valorMaoObra" placeholder="Valor manual da mão de obra (R$)">
-    </div>
-
-    <button class="btn-add" onclick="adicionarItem()">Adicionar Orçamento</button>
-</div>
-
-<div class="resumo-container" id="resumo-box" style="display: none;">
-    <label style="text-align: center; margin-bottom: 12px; display: block; color: var(--accent-cyan); font-weight: bold;">CÁLCULO DE COLETA (R$ 80)</label>
-    <div class="unit-selector">
-        <label><input type="radio" name="distMode" value="total" checked onchange="atualizarInterface()"> <span>Somar em Todos</span></label>
-        <label><input type="radio" name="distMode" value="split" onchange="atualizarInterface()"> <span>Diluir nos Itens</span></label>
-    </div>
-
-    <div id="lista-itens"></div>
-    
-    <div class="total-geral">
-        <span style="font-size: 0.9rem; letter-spacing: 2px;">VALOR TOTAL DO PEDIDO</span>
-        <h3 id="valor-total-geral">R$ 0,00</h3>
-    </div>
-    
-    <button class="btn-limpar" onclick="limparPedido()">Limpar Histórico</button>
-</div>
-
-<a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Voltar ao site principal</a>
-
-<script>
-    const TAXA_COLETA = 80.00;
-    const PRECO_BARRA_METALON = 115.00;
-    const TABELA_PRECOS = {
-        "Lona Frontlight 440g S/ Acab.": 64, "Lona Frontlight 440g C/ Acab.": 74,
-        "Lona Backlight 440g S/ Acab.": 88, "Lona Backlight 440g C/ Acab.": 98,
-        "Adesivo Promo": 64, "Adesivo Perfurado": 84, "Adesivo Blackout": 82,
-        "Adesivo Premium (Oracal/3M)": 140, "Adesivo Promo + Corte": 94,
-        "Adesivo Promo + Laminação": 110, "Adesivo Promo + Lam. + Corte": 126,
-        "Adesivo Blackout + Laminação": 106, "Adesivo Premium + Laminação": 240
-    };
-
-    let itensPedido = [];
-
-    function toggleMaoObra() {
-        document.getElementById('campoMaoObra').style.display = document.getElementById('checkMaoObra').checked ? 'block' : 'none';
-    }
-
-    function adicionarItem() {
-        const prod = document.getElementById('produto').value;
-        const unit = document.querySelector('input[name="unit"]:checked').value;
-        let largI = parseFloat(document.getElementById('largura').value) || 0;
-        let altI = parseFloat(document.getElementById('altura').value) || 0;
-        const qtd = parseInt(document.getElementById('quantidade').value) || 1;
-        const eFachada = document.getElementById('checkFachada').checked;
-        const vMaoObra = parseFloat(document.getElementById('valorMaoObra').value) || 0;
-
-        if (largI <= 0 || altI <= 0) return alert("Por favor, preencha as medidas.");
-
-        let largM = (unit === "cm") ? largI / 100 : largI;
-        let altM = (unit === "cm") ? altI / 100 : altI;
-        let valorBase = (largM * altM) * TABELA_PRECOS[prod] * qtd;
-        let barras = eFachada ? Math.ceil(((largM + altM) * 2) * qtd / 6) : 0;
-
-        itensPedido.push({ prod, larg: largI, alt: altI, unit, valorBase: valorBase + (barras * PRECO_BARRA_METALON) + vMaoObra, qtd });
-        
-        // Reset campos
-        document.getElementById('largura').value = "";
-        document.getElementById('altura').value = "";
-        atualizarInterface();
-    }
-
-    function atualizarInterface() {
-        const listaDiv = document.getElementById('lista-itens');
-        const mode = document.querySelector('input[name="distMode"]:checked').value;
-        let totalAcumulado = 0;
-        listaDiv.innerHTML = "";
-        let diluicao = TAXA_COLETA / (itensPedido.length || 1);
-
-        itensPedido.forEach((item, i) => {
-            let valorExibicao = (mode === "total") ? (item.valorBase + TAXA_COLETA) : (item.valorBase + diluicao);
-            totalAcumulado += valorExibicao;
-            listaDiv.innerHTML += `
-                <div class="item-lista">
-                    <div>
-                        <b style="color: var(--accent-cyan)">${item.qtd}x ${item.prod}</b><br>
-                        <small style="opacity:0.6">${item.larg}${item.unit} x ${item.alt}${item.unit}</small><br>
-                        <b style="font-size:1.1rem">R$ ${valorExibicao.toLocaleString('pt-br',{minimumFractionDigits:2})}</b>
-                    </div>
-                    <button style="color: #ff4444; background:none; border:none; cursor:pointer; font-size:1.4rem" onclick="removerItem(${i})">✕</button>
-                </div>`;
-        });
-        document.getElementById('resumo-box').style.display = itensPedido.length > 0 ? "block" : "none";
-        document.getElementById('valor-total-geral').innerText = `R$ ${totalAcumulado.toLocaleString('pt-br',{minimumFractionDigits:2})}`;
-    }
-
-    function removerItem(i) { itensPedido.splice(i, 1); atualizarInterface(); }
-    function limparPedido() { if(confirm("Deseja realmente limpar todo o orçamento?")) { itensPedido = []; atualizarInterface(); } }
-</script>
+    <script>
+        function verificar() {
+            const senha = document.getElementById('senha').value;
+            if(senha === "1234") { // <--- Altere sua senha aqui
+                document.getElementById('login-screen').style.display = 'none';
+                document.getElementById('calc-content').style.display = 'block';
+                document.body.style.background = "#0b1322";
+            } else {
+                alert("Senha Incorreta!");
+            }
+        }
+    </script>
 </body>
 </html>

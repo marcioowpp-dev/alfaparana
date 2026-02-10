@@ -1,13 +1,26 @@
-function reveal() {
-    var reveals = document.querySelectorAll(".reveal");
-    for (var i = 0; i < reveals.length; i++) {
-        var windowHeight = window.innerHeight;
-        var elementTop = reveals[i].getBoundingClientRect().top;
-        var elementVisible = 100;
-        if (elementTop < windowHeight - elementVisible) {
-            reveals[i].classList.add("active");
-        }
-    }
+// Abrir imagens ocultas
+document.getElementById('btn-load-more')?.addEventListener('click', function() {
+    const hiddenItems = document.querySelectorAll('.item.hidden');
+    hiddenItems.forEach(item => item.classList.remove('hidden'));
+    this.style.display = 'none';
+});
+
+// Zoom da Galeria
+function openZoom(el) {
+    const overlay = document.getElementById('zoom-overlay');
+    const img = document.getElementById('zoom-img');
+    overlay.style.display = 'flex';
+    img.src = el.src;
 }
-window.addEventListener("scroll", reveal);
-reveal(); // Iniciar no carregamento
+
+// Reveal on Scroll
+const reveal = () => {
+    const reveals = document.querySelectorAll('.reveal');
+    reveals.forEach(el => {
+        const windowHeight = window.innerHeight;
+        const revealTop = el.getBoundingClientRect().top;
+        if (revealTop < windowHeight - 100) el.classList.add('active');
+    });
+};
+window.addEventListener('scroll', reveal);
+reveal();

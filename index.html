@@ -3,20 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alfa Paraná | Inteligência em Comunicação Visual</title>
+    <title>Alfa Paraná | Inteligência Visual</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
+<div class="noise-overlay"></div>
+
 <header class="navbar">
     <div class="container nav-content">
         <img src="https://i.ibb.co/FLmLhR75/ALFA-PARANA-29.png" alt="Alfa Paraná" class="nav-logo">
         <nav>
-            <a href="#especialidades">Especialidades</a>
+            <a href="#servicos">Serviços</a>
             <a href="#portfolio">Portfólio</a>
             <a href="admin.html" class="nav-btn-adm">Acesso Restrito</a>
-            <a href="https://wa.me/5541995022336" target="_blank" class="nav-btn-wa"><i class="fab fa-whatsapp"></i> Orçamento Grátis</a>
+            <a href="https://wa.me/5541995022336" target="_blank" class="nav-btn-wa">WhatsApp</a>
         </nav>
     </div>
 </header>
@@ -28,85 +30,65 @@
     </div>
 </div>
 
-<section class="hero-afacom reveal">
+<section class="hero-tech">
     <div class="container hero-grid">
-        <div class="hero-text">
-            <span class="badge-tech">O Maior Centro de Soluções do Litoral</span>
-            <h1>ALFA PARANÁ: <span>TECNOLOGIA</span> EM IMPRESSÃO</h1>
-            <p>Especialistas em transformar grandes ideias em projetos reais de Comunicação Visual com precisão milimétrica.</p>
-            <div class="hero-btns">
-                <a href="https://wa.me/5541995022336" target="_blank" class="btn-primary">Falar com Especialista</a>
-                <a href="#portfolio" class="btn-secondary">Ver Projetos</a>
+        <div class="hero-text reveal">
+            <span class="badge-tech">TECNOLOGIA EM COMUNICAÇÃO VISUAL</span>
+            <h1>IMPRESSÃO <br><span>ESTRATÉGICA</span></h1>
+            <p>Transformamos fachadas e ambientes com precisão técnica e design de alto impacto. O maior centro de soluções do litoral.</p>
+            <a href="https://wa.me/5541995022336" target="_blank" class="btn-main-tech">SOLICITAR ORÇAMENTO</a>
+        </div>
+        <div class="hero-img reveal">
+            <img src="https://i.ibb.co/Ng8m9y4w/54.png" alt="Destaque Alfa Paraná">
+        </div>
+    </div>
+</section>
+
+<section id="portfolio" class="container reveal">
+    <div class="section-header">
+        <h2>PORTFÓLIO</h2>
+        <p>Projetos recentes executados com excelência</p>
+    </div>
+    
+    <div class="portfolio-grid" id="portfolio-grid">
+        <div class="item"><img src="https://i.ibb.co/Ng8m9y4w/54.png" onclick="openZoom(this)"></div>
+        <div class="item"><img src="https://i.ibb.co/0j44yQJB/53.png" onclick="openZoom(this)"></div>
+        <div class="item"><img src="https://i.ibb.co/VcRjBGPN/52.png" onclick="openZoom(this)"></div>
+        <div class="item"><img src="https://i.ibb.co/x81P2kcd/51.png" onclick="openZoom(this)"></div>
+        <div class="item"><img src="https://i.ibb.co/6cNJV5kC/50.png" onclick="openZoom(this)"></div>
+        <div class="item"><img src="https://i.ibb.co/KzbhXSZw/49.png" onclick="openZoom(this)"></div>
+        
+        <div class="item hidden"><img src="https://i.ibb.co/vCXpyLmp/48.png" onclick="openZoom(this)"></div>
+        <div class="item hidden"><img src="https://i.ibb.co/WWs9F2GN/47.png" onclick="openZoom(this)"></div>
+    </div>
+    <button id="btn-load-more" class="btn-outline">VER MAIS PROJETOS</button>
+</section>
+
+<footer class="footer-modern">
+    <div class="container">
+        <div class="footer-header">
+            <img src="https://i.ibb.co/FLmLhR75/ALFA-PARANA-29.png" alt="Alfa Paraná" class="mini-logo">
+            <p><strong>(41) 99502-2336</strong> | Paranaguá e Curitiba</p>
+        </div>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>📋 SERVIÇOS</h4>
+                <ul><li>• Fachadas</li><li>• Banners</li><li>• Adesivos</li><li>• Sinalização</li></ul>
+            </div>
+            <div class="footer-col">
+                <h4>🕒 HORÁRIOS</h4>
+                <ul><li>Segunda a Sexta:</li><li>08:30 às 12:00 | 13:30 às 18:00</li></ul>
+            </div>
+            <div class="footer-col">
+                <h4>📧 E-MAIL</h4>
+                <p style="font-size: 0.85rem; color: #666;">alfaparana.png@gmail.com</p>
             </div>
         </div>
-        <div class="hero-img">
-             <img src="https://i.ibb.co/jk2wRtg4/44.png" alt="Produção Gráfica">
-        </div>
+        <div class="bottom-bar">© 2026 Alfa Paraná - Todos os direitos reservados.</div>
     </div>
-</section>
-
-<section id="especialidades" class="container reveal">
-    <div class="section-title">
-        <h2>NOSSAS ESPECIALIDADES</h2>
-        <p>Domínio técnico em todas as etapas da produção.</p>
-    </div>
-    <div class="services-afacom">
-        <div class="card-tech">
-            <div class="icon-box"><i class="fas fa-layer-group"></i></div>
-            <h3>Fachadas ACM</h3>
-            <p>Estruturas metálicas e revestimentos de alta durabilidade com design moderno.</p>
-        </div>
-        <div class="card-tech">
-            <div class="icon-box"><i class="fas fa-print"></i></div>
-            <h3>Grandes Formatos</h3>
-            <p>Impressão em alta definição para banners, lonas e outdoors.</p>
-        </div>
-        <div class="card-tech">
-            <div class="icon-box"><i class="fas fa-car"></i></div>
-            <h3>Envelopamento</h3>
-            <p>Proteção e personalização de frotas com adesivos premium (Oracal/3M).</p>
-        </div>
-        <div class="card-tech">
-            <div class="icon-box"><i class="fas fa-pen-nib"></i></div>
-            <h3>Design Estratégico</h3>
-            <p>Criação de artes exclusivas focadas em conversão e branding.</p>
-        </div>
-    </div>
-</section>
-
-<section id="portfolio" class="reveal">
-    <div class="slider-full">
-        <div class="slider-track">
-            <div class="slide-item"><img src="https://i.ibb.co/Ng8m9y4w/54.png"></div>
-            <div class="slide-item"><img src="https://i.ibb.co/0j44yQJB/53.png"></div>
-            <div class="slide-item"><img src="https://i.ibb.co/VcRjBGPN/52.png"></div>
-            <div class="slide-item"><img src="https://i.ibb.co/x81P2kcd/51.png"></div>
-            <div class="slide-item"><img src="https://i.ibb.co/6cNJV5kC/50.png"></div>
-            <div class="slide-item"><img src="https://i.ibb.co/Ng8m9y4w/54.png"></div>
-            <div class="slide-item"><img src="https://i.ibb.co/0j44yQJB/53.png"></div>
-        </div>
-    </div>
-</section>
-
-<footer class="footer-tech">
-    <div class="container footer-grid">
-        <div class="footer-about">
-            <img src="https://i.ibb.co/FLmLhR75/ALFA-PARANA-29.png" class="mini-logo">
-            <p>A Alfa Paraná é referência em treinamento e execução de projetos gráficos no mercado paranaense.</p>
-        </div>
-        <div class="footer-links">
-            <h4>HORÁRIO COMERCIAL</h4>
-            <p>Seg - Sex: 08:30 às 18:00</p>
-            <p>Paranaguá - PR</p>
-        </div>
-        <div class="footer-links">
-            <h4>CONTATO RÁPIDO</h4>
-            <p>(41) 99502-2336</p>
-            <p>alfaparana@contato.com.br</p>
-        </div>
-    </div>
-    <div class="bottom-bar">© 2026 ALFA PARANÁ - IMPRESSÃO CRIATIVA</div>
 </footer>
+
+<div id="zoom-overlay" onclick="this.style.display='none'"><img id="zoom-img"></div>
 
 <script src="script.js"></script>
 </body>
