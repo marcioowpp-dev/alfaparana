@@ -1,18 +1,14 @@
-// Abrir fotos ocultas
-document.getElementById('btn-ver-mais')?.addEventListener('click', function() {
-    const hiddenItems = document.querySelectorAll('.feed-item.hidden');
-    for (let i = 0; i < 6 && i < hiddenItems.length; i++) {
-        hiddenItems[i].classList.remove('hidden');
+// Efeito Reveal ao rolar a página
+function reveal() {
+    var reveals = document.querySelectorAll(".reveal");
+    for (var i = 0; i < reveals.length; i++) {
+        var windowHeight = window.innerHeight;
+        var elementTop = reveals[i].getBoundingClientRect().top;
+        var elementVisible = 150;
+        if (elementTop < windowHeight - elementVisible) {
+            reveals[i].classList.add("active");
+        }
     }
-    if (document.querySelectorAll('.feed-item.hidden').length === 0) {
-        this.style.display = 'none';
-    }
-});
-
-// Zoom da Galeria
-function openZoom(el) {
-    const overlay = document.getElementById('zoom-overlay');
-    const img = document.getElementById('zoom-img');
-    overlay.style.display = 'flex';
-    img.src = el.src;
 }
+window.addEventListener("scroll", reveal);
+reveal(); // Executa ao carregar para mostrar o topo
