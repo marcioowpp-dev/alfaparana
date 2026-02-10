@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alfa Paraná | Gráfica e Comunicação Visual</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+<div class="top-bar">
+    <div class="container flex-between">
+        <span><i class="fas fa-truck"></i> Entregas em Paranaguá e Curitiba</span>
+        <span><i class="fab fa-whatsapp"></i> (41) 99502-2336</span>
+    </div>
+</div>
+
+<header class="navbar">
+    <div class="container nav-content">
+        <img src="https://i.ibb.co/FLmLhR75/ALFA-PARANA-29.png" alt="Alfa Logo" class="nav-logo">
+        <div class="search-bar">
+            <input type="text" placeholder="O que você procura? (Fachadas, Banners...)">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+        <nav>
+            <a href="https://wa.me/5541995022336" class="nav-btn">Área do Cliente</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <section class="main-banner">
+        <div class="container banner-grid">
+            <div class="banner-text">
+                <h2>IMPRESSÃO DE ALTA QUALIDADE</h2>
+                <h1>Sua marca em <span>grande formato.</span></h1>
+                <p>De cartões de visita a fachadas monumentais. O melhor preço da região com acabamento premium.</p>
+                <a href="https://wa.me/5541995022336" class="btn-cta">VER TODOS OS SERVIÇOS</a>
+            </div>
+            <div class="banner-img">
+                <img src="https://i.ibb.co/jk2wRtg4/44.png" alt="Produtos Gráficos">
+            </div>
+        </div>
+    </section>
+
+    <section class="categories container">
+        <div class="cat-item">
+            <div class="cat-circle"><i class="fas fa-paints-roller"></i></div>
+            <span>Fachadas ACM</span>
+        </div>
+        <div class="cat-item">
+            <div class="cat-circle"><i class="fas fa-scroll"></i></div>
+            <span>Banners</span>
+        </div>
+        <div class="cat-item">
+            <div class="cat-circle"><i class="fas fa-ad"></i></div>
+            <span>Adesivos</span>
+        </div>
+        <div class="cat-item">
+            <div class="cat-circle"><i class="fas fa-address-card"></i></div>
+            <span>Cartões</span>
+        </div>
+        <div class="cat-item">
+            <div class="cat-circle"><i class="fas fa-truck-moving"></i></div>
+            <span>Frotas</span>
+        </div>
+    </section>
+
+    <section id="galeria" class="container reveal">
+        <h2 class="section-title">Nossos Últimos Trabalhos</h2>
+        <div class="insta-grid">
+            <div class="insta-item"><img src="https://i.ibb.co/4RhLNCfk/55.png" onclick="openLightbox(this)"></div>
+            <div class="insta-item"><img src="https://i.ibb.co/xtqcpzGb/56.png" onclick="openLightbox(this)"></div>
+            <div class="insta-item"><img src="https://i.ibb.co/0pqyB3J4/57.png" onclick="openLightbox(this)"></div>
+            <div class="insta-item"><img src="https://i.ibb.co/r2shL5Mw/58.png" onclick="openLightbox(this)"></div>
+            <div class="insta-item"><img src="https://i.ibb.co/yFwvg61Q/59.png" onclick="openLightbox(this)"></div>
+            <div class="insta-item"><img src="https://i.ibb.co/bMPPCWqP/60.png" onclick="openLightbox(this)"></div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-cards">
+            <div class="f-card">
+                <img src="https://i.ibb.co/FLmLhR75/ALFA-PARANA-29.png" class="mini-logo">
+                <p>Atendimento especializado para empresas e agências.</p>
+            </div>
+            <div class="f-card">
+                <h4>Contato</h4>
+                <p>(41) 99502-2336</p>
+                <p>comercial@alfaparana.com.br</p>
+            </div>
+            <div class="f-card">
+                <h4>Siga-nos</h4>
+                <div class="social-links">
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-facebook"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div id="lightbox" onclick="this.style.display='none'">
+    <img id="lightbox-img" src="" alt="">
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
