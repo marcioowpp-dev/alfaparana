@@ -3,55 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora ADM | Alfa Paraná</title>
+    <title>ADM | Alfa Paraná</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background: #121212; color: white; display: flex; flex-direction: column; align-items: center; padding: 20px; }
-        .login-box { background: #1e1e1e; padding: 40px; border-radius: 15px; border: 1px solid #333; margin-top: 60px; text-align: center; }
-        input[type="password"] { padding: 12px; width: 220px; background: #2d2d2d; color: white; border: 1px solid #444; border-radius: 8px; margin-bottom: 20px; }
+        body { font-family: sans-serif; background: #121212; color: white; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+        .login-box { background: #1e1e1e; padding: 30px; border-radius: 10px; border: 1px solid #333; margin-top: 50px; text-align: center; }
         #calc-content { display: none; width: 100%; max-width: 500px; }
-        .container { background: #1e1e1e; padding: 25px; border-radius: 20px; border: 1px solid #333; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        h2 { color: #facc15; text-align: center; margin-top: 0; }
-        select, input { width: 100%; padding: 14px; margin: 10px 0; background: #2d2d2d; color: white; border: 1px solid #444; border-radius: 10px; box-sizing: border-box; font-size: 1rem; }
-        .btn-add { width: 100%; background: #facc15; color: black; padding: 18px; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 1rem; }
-        .resumo { background: #000; padding: 25px; border-radius: 15px; margin-top: 25px; border: 2px dashed #facc15; }
-        .item-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #222; font-size: 0.9rem; }
-        .mode-selector { display: flex; gap: 10px; margin-bottom: 20px; }
-        .mode-selector label { flex: 1; text-align: center; background: #2d2d2d; padding: 12px; border-radius: 8px; cursor: pointer; font-size: 0.85rem; border: 1px solid #444; }
-        input:checked + span { color: #facc15; font-weight: bold; }
-        input[type="radio"] { display: none; }
+        .container { background: #1e1e1e; padding: 20px; border-radius: 15px; border: 1px solid #333; }
+        select, input { width: 100%; padding: 12px; margin: 10px 0; background: #2d2d2d; color: white; border: 1px solid #444; border-radius: 8px; box-sizing: border-box; }
+        .btn-add { width: 100%; background: #facc15; color: black; padding: 15px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
+        .resumo { background: #000; padding: 20px; border-radius: 15px; margin-top: 20px; border: 2px dashed #facc15; }
+        .mode-selector { display: flex; gap: 10px; margin-bottom: 15px; }
+        .mode-selector label { flex: 1; text-align: center; background: #2d2d2d; padding: 10px; border-radius: 5px; cursor: pointer; font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
 <div id="login-screen" class="login-box">
-    <h2 style="color:white; margin-bottom:20px;">Acesso Restrito</h2>
-    <input type="password" id="pass" placeholder="Senha ADM">
-    <br>
+    <h3>Acesso Alfa Paraná</h3>
+    <input type="password" id="pass" placeholder="Senha">
     <button class="btn-add" onclick="logar()">ENTRAR</button>
 </div>
 
 <div id="calc-content">
     <div class="container">
-        <h2>Impressão Criativa</h2>
+        <h2 style="color:#facc15">Calculadora Completa</h2>
         <select id="produto">
-            <optgroup label="Lonas">
-                <option value="64">Lona Front 440g Sem Acab. (R$ 64)</option>
-                <option value="74">Lona Front 440g Com Acab. (R$ 74)</option>
-                <option value="88">Lona Back 440g Sem Acab. (R$ 88)</option>
-            </optgroup>
-            <optgroup label="Adesivos">
-                <option value="64">Adesivo Promo (R$ 64)</option>
-                <option value="84">Adesivo Perfurado (R$ 84)</option>
-                <option value="110">Adesivo Promo + Laminação (R$ 110)</option>
-                <option value="140">Adesivo Premium Oracal (R$ 140)</option>
-            </optgroup>
+            <option value="64">Lona Front 440g Sem Acab. (R$ 64)</option>
+            <option value="74">Lona Front 440g Com Acab. (R$ 74)</option>
+            <option value="84">Adesivo Perfurado (R$ 84)</option>
+            <option value="140">Adesivo Premium Oracal (R$ 140)</option>
+            <option value="110">Adesivo + Laminação (R$ 110)</option>
         </select>
-        <div style="display: flex; gap: 10px;">
-            <input type="number" id="larg" placeholder="Largura (m)" step="0.01">
-            <input type="number" id="alt" placeholder="Altura (m)" step="0.01">
-        </div>
-        <input type="number" id="qtd" value="1" placeholder="Quantidade">
-        <button class="btn-add" onclick="add()">ADICIONAR AO PEDIDO</button>
+        <input type="number" id="larg" placeholder="Largura (m)">
+        <input type="number" id="alt" placeholder="Altura (m)">
+        <input type="number" id="qtd" value="1">
+        <button class="btn-add" onclick="add()">ADICIONAR ITEM</button>
     </div>
 
     <div id="resumo-box" class="resumo" style="display:none">
@@ -60,51 +46,34 @@
             <label><input type="radio" name="mode" value="split" onchange="render()"> <span>Diluir Coleta</span></label>
         </div>
         <div id="lista"></div>
-        <h2 id="total-geral" style="text-align:center; color:#facc15; margin-top: 20px; font-size: 2rem;"></h2>
-        <button onclick="location.reload()" style="background:none; color:#ff4444; border:none; width:100%; cursor:pointer; text-decoration: underline; margin-top: 10px;">Limpar Pedido</button>
+        <h2 id="total-geral" style="text-align:center; color:#facc15; margin-top: 15px;"></h2>
+        <button onclick="location.reload()" style="background:none; color:red; border:none; width:100%; cursor:pointer; text-decoration: underline;">Limpar Pedido</button>
     </div>
-    <br><a href="index.html" style="color:#666; text-decoration:none; display: block; text-align: center;">← Voltar ao Site</a>
 </div>
 
 <script>
-    function logar() { 
-        if(document.getElementById('pass').value === "ALFA2026") { 
-            document.getElementById('login-screen').style.display='none'; 
-            document.getElementById('calc-content').style.display='block'; 
-        } else { alert("Senha incorreta"); } 
-    }
-
+    function logar() { if(document.getElementById('pass').value === "ALFA2026") { document.getElementById('login-screen').style.display='none'; document.getElementById('calc-content').style.display='block'; } }
     let itens = [];
     function add() {
         let l = parseFloat(document.getElementById('larg').value);
         let a = parseFloat(document.getElementById('alt').value);
         let p = parseFloat(document.getElementById('produto').value);
         let q = parseInt(document.getElementById('qtd').value);
-        let nome = document.getElementById('produto').options[document.getElementById('produto').selectedIndex].text.split('(')[0];
-
-        if(!l || !a) return alert("Por favor, preencha as medidas.");
-        
-        itens.push({ nome: nome.trim(), valorBase: (l * a * p * q), qtd: q, dim: l + 'x' + a });
-        document.getElementById('larg').value = "";
-        document.getElementById('alt').value = "";
+        if(!l || !a) return alert("Preencha as medidas");
+        itens.push({ nome: document.getElementById('produto').options[document.getElementById('produto').selectedIndex].text.split('(')[0], valor: (l*a*p*q) });
         render();
     }
-
     function render() {
         let mode = document.querySelector('input[name="mode"]:checked').value;
         let html = ""; let total = 0;
         let taxa = 80 / (itens.length || 1);
-        
         itens.forEach(i => {
-            let v = (mode === "total") ? (i.valorBase + 80) : (i.valorBase + taxa);
+            let v = (mode === "total") ? (i.valor + 80) : (i.valor + taxa);
             total += v;
-            html += `<div class="item-row">
-                <span>${i.qtd}x ${i.nome} (${i.dim})</span>
-                <b>R$ ${v.toLocaleString('pt-br',{minimumFractionDigits:2})}</b>
-            </div>`;
+            html += `<p style="display:flex; justify-content:space-between; border-bottom:1px solid #222; padding:5px 0;"><span>${i.nome}</span> <b>R$ ${v.toFixed(2)}</b></p>`;
         });
         document.getElementById('lista').innerHTML = html;
-        document.getElementById('total-geral').innerText = "Total: R$ " + total.toLocaleString('pt-br',{minimumFractionDigits:2});
+        document.getElementById('total-geral').innerText = "Total: R$ " + total.toFixed(2);
         document.getElementById('resumo-box').style.display = "block";
     }
 </script>
