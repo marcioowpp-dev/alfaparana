@@ -9,15 +9,10 @@ document.getElementById('btn-ver-mais')?.addEventListener('click', function() {
     }
 });
 
-// Zoom da Galeria
-const zoomOverlay = document.getElementById('zoom-overlay');
-const zoomImg = document.getElementById('zoom-img');
-
+// Sistema de Zoom
 function openZoom(el) {
-    zoomOverlay.style.display = 'flex';
-    zoomImg.src = el.src;
+    const overlay = document.getElementById('zoom-overlay');
+    const img = document.getElementById('zoom-img');
+    overlay.style.display = 'flex';
+    img.src = el.src;
 }
-
-document.addEventListener('keydown', (e) => {
-    if (e.key === "Escape") zoomOverlay.style.display = 'none';
-});

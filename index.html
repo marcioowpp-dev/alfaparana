@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alfa Paraná | Gráfica e Comunicação Visual</title>
+    <title>Alfa Paraná | Impressão Criativa</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
@@ -13,8 +12,10 @@
     <div class="container nav-content">
         <img src="https://i.ibb.co/FLmLhR75/ALFA-PARANA-29.png" alt="Alfa Logo" class="nav-logo">
         <nav>
+            <a href="#servicos">Serviços</a>
+            <a href="#galeria">Portfólio</a>
             <a href="admin.html" class="nav-btn-adm">Acesso ADM</a>
-            <a href="https://api.whatsapp.com/send?phone=5541995022336" class="nav-btn">Solicitar Orçamento</a>
+            <a href="https://api.whatsapp.com/send?phone=5541995022336" class="nav-btn">WhatsApp</a>
         </nav>
     </div>
 </header>
@@ -24,15 +25,25 @@
         <div class="container banner-flex">
             <div class="banner-text">
                 <span class="tag">Qualidade Garantida</span>
-                <h1>Impressão de <span>Alto Impacto</span> para sua Empresa.</h1>
+                <h1>IMPRESSÃO <span>CRIATIVA</span></h1>
+                <p style="font-size: 1.4rem; font-weight: 600; color: #333; margin-top: -10px;">Soluções Gráficas e Comunicação Visual</p>
                 <p>Fachadas, Banners, Adesivos e Materiais Gráficos com o melhor acabamento de Paranaguá e Região.</p>
                 <div class="banner-actions">
                     <a href="https://api.whatsapp.com/send?phone=5541995022336" class="btn-main">Falar com Consultor</a>
                 </div>
             </div>
             <div class="banner-visual">
-                <img src="https://i.ibb.co/HDQxJ2RK/44.png" alt="Exemplo">
+                <img src="https://i.ibb.co/HDQxJ2RK/44.png" alt="Destaque">
             </div>
+        </div>
+    </section>
+
+    <section id="servicos" class="container" style="padding: 80px 0;">
+        <h2 class="title-center">Nossos Serviços</h2>
+        <div class="services-grid">
+            <div class="service-card"><h3>Comunicação Visual</h3><p>Fachadas em ACM, Lonas e Letreiros de alto impacto.</p></div>
+            <div class="service-card"><h3>Impressão Digital</h3><p>Banners, Adesivos de alta resolução e Perfurados.</p></div>
+            <div class="service-card"><h3>Materiais Gráficos</h3><p>Cartões de Visita, Panfletos e Identidade Visual.</p></div>
         </div>
     </section>
 
@@ -45,7 +56,6 @@
             <div class="feed-item"><img src="https://i.ibb.co/5ydj1cv/51.png" onclick="openZoom(this)"></div>
             <div class="feed-item"><img src="https://i.ibb.co/fzqYYNMF/50.png" onclick="openZoom(this)"></div>
             <div class="feed-item"><img src="https://i.ibb.co/21yMKbsB/49.png" onclick="openZoom(this)"></div>
-            
             <div class="feed-item hidden"><img src="https://i.ibb.co/xrT7hp9/48.png" onclick="openZoom(this)"></div>
             <div class="feed-item hidden"><img src="https://i.ibb.co/j9D4KjwT/47.png" onclick="openZoom(this)"></div>
             <div class="feed-item hidden"><img src="https://i.ibb.co/mrF1nHtP/46.png" onclick="openZoom(this)"></div>
@@ -62,35 +72,25 @@
             <div class="feed-item hidden"><img src="https://i.ibb.co/3yzH1VM3/56.png" onclick="openZoom(this)"></div>
             <div class="feed-item hidden"><img src="https://i.ibb.co/Y7W8jRbf/55.png" onclick="openZoom(this)"></div>
         </div>
-        <div style="text-align: center; margin: 40px 0;">
-            <button id="btn-ver-mais" class="btn-outline">VER MAIS PROJETOS</button>
-        </div>
+        <button id="btn-ver-mais" class="btn-outline">VER MAIS PROJETOS</button>
     </section>
 </main>
 
 <footer class="footer-modern">
     <div class="container footer-grid">
         <div class="footer-brand">
-            <img src="https://i.ibb.co/FLmLhR75/ALFA-PARANA-29.png" class="footer-logo" style="height: 60px;">
+            <img src="https://i.ibb.co/FLmLhR75/ALFA-PARANA-29.png" style="height: 60px;">
             <p><strong>(41) 99502-2336</strong></p>
-            <p>Paranaguá e Curitiba</p>
-        </div>
-        <div class="footer-info">
-            <h4>SERVIÇOS</h4>
-            <ul>
-                <li>Fachadas e Letreiros</li>
-                <li>Banners e Lonas</li>
-                <li>Adesivos e Rótulos</li>
-            </ul>
+            <p>Paranaguá - PR</p>
         </div>
         <div class="footer-hours">
-            <h4>HORÁRIOS</h4>
+            <h4>ATENDIMENTO</h4>
             <p>Segunda a Sexta</p>
             <p>08:30 às 18:00</p>
         </div>
     </div>
-    <div class="footer-bottom">
-        <p>© 2026 Alfa Paraná - Impressão Criativa.</p>
+    <div style="text-align: center; color: #999; font-size: 0.8rem; margin-top: 30px;">
+        © 2026 Alfa Paraná - Impressão Criativa.
     </div>
 </footer>
 
