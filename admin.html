@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADM - Alfa Paraná</title>
+    <style>
+        body { background: #121212; color: white; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+        .login-box { background: #1e1e1e; padding: 30px; border-radius: 10px; text-align: center; border: 1px solid #333; margin-top: 100px; }
+        #calc-content { display: none; width: 100%; max-width: 500px; }
+        .container { background: #1e1e1e; padding: 20px; border-radius: 15px; border: 1px solid #333; }
+        input, select { width: 100%; padding: 12px; margin: 10px 0; background: #2d2d2d; color: white; border: 1px solid #444; border-radius: 5px; }
+        button { width: 100%; padding: 15px; background: #facc15; border: none; font-weight: bold; cursor: pointer; border-radius: 5px; margin-top: 10px; }
+        .resumo { background: #1e1e1e; padding: 20px; border-radius: 15px; margin-top: 20px; width: 100%; border: 1px dashed #facc15; }
+        .item { display: flex; justify-content: space-between; border-bottom: 1px solid #333; padding: 10px 0; }
+    </style>
+</head>
+<body>
+
+<div id="login-screen" class="login-box">
+    <h3>Acesso Restrito</h3>
+    <input type="password" id="senha" placeholder="Digite a senha mestre">
+    <button onclick="logar()">ENTRAR</button>
+</div>
+
+<div id="calc-content">
+    <div class="container">
+        <h2 style="color: #facc15; text-align: center;">Calculadora Interna</h2>
+        <select id="produto">
+            <option value="64">Lona Front 440g (R$ 64/m²)</option>
+            <option value="84">Adesivo Perfurado (R$ 84/m²)</option>
+            <option value="94">Adesivo + Corte (R$ 94/m²)</option>
+        </select>
+        <div style="display: flex; gap: 10px;">
+            <input type="number" id="larg" placeholder="Largura (m)">
+            <input type="number" id="alt" placeholder="Altura (m)">
+        </div>
+        <input type="number" id="qtd" value="1" placeholder="Quantidade">
+        <button onclick="add()">Adicionar ao Pedido</button>
+    </div>
+
+    <div id="resumo-box" class="resumo" style="display: none;">
+        <div id="lista"></div>
+        <h3 id="total" style="text-align: center; color: #facc15; margin-top: 15px;">Total: R$ 0,00</h3>
+        <button onclick="location.reload()" style="background: none; color: #ff4444; text-decoration: underline;">Limpar Tudo</button>
+    </div>
+    <br><a href="index.html" style="color: #666;">← Voltar para o site público</a>
+</div>
+
+<script>
+    function logar() {
+        if(document.getElementById('senha').value === "ALFA2026") {
+            document.getElementById('login-screen').style.display = 'none';
+            document.getElementById('calc-content').style.display = 'block';
+        } else { alert("Senha Incorreta!"); }
+    }
+
+    let itens = [];
+    function add() {
+        const p = document.getElementById('produto');
+        const l = parseFloat(document.getElementById('larg').value);
+        const a = parseFloat(document.getElementById('alt').value);
+        const q = parseInt(document.getElementById('qtd').value);
+        
+        if(!l || !a) return alert("Preencha as medidas!");
+        
+        const valor = (l * a) * parseFloat(p.value) * q;
+        itens.push({nome: p.options[p.selectedIndex].text, valor});
+        
+        let html = "";
+        let total = 80; // Taxa coleta inicial
+        itens.forEach(i => {
+            html += `<div class="item"><span>${i.nome}</span> <b>R$ ${i.valor.toFixed(2)}</b></div>`;
+            total += i.valor;
+        });
+        
+        document.getElementById('lista').innerHTML = html;
+        document.getElementById('total').innerText = "Total + Coleta: R$ " + total.toFixed(2);
+        document.getElementById('resumo-box').style.display = "block";
+    }
+</script>
+</body>
+</html>

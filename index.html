@@ -15,6 +15,7 @@
         <nav>
             <a href="#servicos">Serviços</a>
             <a href="#galeria">Portfólio</a>
+            <a href="admin.html" class="nav-btn-adm">Acesso ADM</a>
             <a href="https://wa.me/5541995022336" class="nav-btn">Solicitar Orçamento</a>
         </nav>
     </div>
@@ -26,20 +27,17 @@
             <div class="banner-text">
                 <span class="tag">Qualidade Garantida</span>
                 <h1>Impressão de <span>Alto Impacto</span> para sua Empresa.</h1>
-                <p>Fachadas, Banners, Adesivos e Materiais Gráficos com o melhor acabamento de Paranaguá e Região.</p>
-                <div class="banner-actions">
-                    <a href="https://wa.me/5541995022336" class="btn-main">Falar com Consultor</a>
-                </div>
+                <p>Fachadas, Banners e Adesivos com o melhor acabamento da região.</p>
+                <a href="https://wa.me/5541995022336" class="btn-main">Falar com Consultor</a>
             </div>
             <div class="banner-visual">
-                <img src="https://i.ibb.co/HDQxJ2RK/44.png" alt="Destaque Alfa Paraná">
+                <img src="https://i.ibb.co/HDQxJ2RK/44.png" alt="Destaque">
             </div>
         </div>
     </section>
 
-    <section id="galeria" class="container" style="padding: 60px 0;">
+    <section id="galeria" class="container">
         <h2 class="title-center">Projetos Recentes</h2>
-        
         <div class="insta-feed" id="portfolio-grid">
             <div class="feed-item"><img src="https://i.ibb.co/m5w9sTK3/54.png" onclick="openZoom(this)"></div>
             <div class="feed-item"><img src="https://i.ibb.co/39K1Pk9S/53.png" onclick="openZoom(this)"></div>
@@ -47,7 +45,6 @@
             <div class="feed-item"><img src="https://i.ibb.co/5ydj1cv/51.png" onclick="openZoom(this)"></div>
             <div class="feed-item"><img src="https://i.ibb.co/fzqYYNMF/50.png" onclick="openZoom(this)"></div>
             <div class="feed-item"><img src="https://i.ibb.co/21yMKbsB/49.png" onclick="openZoom(this)"></div>
-
             <div class="feed-item hidden"><img src="https://i.ibb.co/xrT7hp9/48.png" onclick="openZoom(this)"></div>
             <div class="feed-item hidden"><img src="https://i.ibb.co/j9D4KjwT/47.png" onclick="openZoom(this)"></div>
             <div class="feed-item hidden"><img src="https://i.ibb.co/mrF1nHtP/46.png" onclick="openZoom(this)"></div>
@@ -64,43 +61,13 @@
             <div class="feed-item hidden"><img src="https://i.ibb.co/3yzH1VM3/56.png" onclick="openZoom(this)"></div>
             <div class="feed-item hidden"><img src="https://i.ibb.co/Y7W8jRbf/55.png" onclick="openZoom(this)"></div>
         </div>
-
-        <div style="text-align: center; margin-top: 40px;">
+        <div style="text-align: center; margin: 40px 0;">
             <button id="btn-ver-mais" class="btn-outline">VER MAIS PROJETOS</button>
         </div>
     </section>
 </main>
 
-<footer class="footer-modern">
-    <div class="container footer-grid">
-        <div class="footer-brand">
-            <img src="https://i.ibb.co/FLmLhR75/ALFA-PARANA-29.png" class="footer-logo">
-            <p><strong>(41) 99502-2336</strong></p>
-            <p>Paranaguá e Curitiba</p>
-        </div>
-        <div class="footer-info">
-            <h4>SERVIÇOS</h4>
-            <ul>
-                <li>Fachadas e Letreiros</li>
-                <li>Banners e Lonas</li>
-                <li>Adesivos e Rótulos</li>
-            </ul>
-        </div>
-        <div class="footer-hours">
-            <h4>HORÁRIOS</h4>
-            <p>Segunda a Sexta</p>
-            <p>08:30 às 18:00</p>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p>© 2026 Alfa Paraná - Impressão Criativa.</p>
-    </div>
-</footer>
-
-<div id="zoom-overlay" onclick="this.style.display='none'">
-    <img id="zoom-img">
-</div>
-
+<div id="zoom-overlay" onclick="this.style.display='none'"><img id="zoom-img"></div>
 <script src="script.js"></script>
 </body>
 </html>

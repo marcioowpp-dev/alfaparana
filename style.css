@@ -1,50 +1,38 @@
 :root { --primary: #0046ad; --text: #333; --light-bg: #fdfdfd; }
 * { margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', sans-serif; }
-body { background: var(--light-bg); color: var(--text); }
+body { background: var(--light-bg); color: var(--text); overflow-x: hidden; }
 .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-/* NAVBAR */
+/* NAVBAR & LOGO 90PX */
 .navbar { background: #fff; padding: 10px 0; border-bottom: 1px solid #eee; position: sticky; top:0; z-index:100; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
 .nav-content { display: flex; justify-content: space-between; align-items: center; }
+.nav-logo { height: 90px; width: auto; }
 
-/* LOGO DO TOPO GRANDE */
-.nav-logo { height: 90px; width: auto; cursor: pointer; }
-
+nav { display: flex; align-items: center; }
 nav a { text-decoration: none; color: #555; font-weight: 600; margin-left: 20px; }
 .nav-btn { background: var(--primary); color: #fff !important; padding: 10px 20px; border-radius: 5px; }
+.nav-btn-adm { border: 1px solid #ddd; padding: 8px 15px; border-radius: 5px; font-size: 0.8rem; }
 
-/* HERO BANNER */
-.hero-banner { background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); padding: 80px 0; }
-.banner-flex { display: flex; align-items: center; gap: 50px; }
-.banner-text h1 { font-size: 3rem; margin: 20px 0; }
+/* BANNER */
+.hero-banner { background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); padding: 60px 0; }
+.banner-flex { display: flex; align-items: center; gap: 40px; }
+.banner-text h1 { font-size: 3rem; margin: 15px 0; line-height: 1.1; }
 .banner-text h1 span { color: var(--primary); }
-.tag { background: var(--primary); color: #fff; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; }
-.btn-main { background: #1a1a1a; color: #fff; padding: 15px 35px; border-radius: 5px; text-decoration: none; font-weight: bold; display: inline-block; }
-.banner-visual img { width: 100%; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+.btn-main { background: #1a1a1a; color: #fff; padding: 15px 30px; border-radius: 5px; text-decoration: none; font-weight: bold; display: inline-block; }
+.banner-visual img { width: 100%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
 
-/* GALERIA INSTAGRAM STYLE */
+/* GALERIA */
 .insta-feed { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
-.feed-item { aspect-ratio: 1/1; overflow: hidden; border-radius: 10px; cursor: pointer; border: 1px solid #eee; }
+.feed-item { aspect-ratio: 1/1; overflow: hidden; border-radius: 8px; cursor: pointer; border: 1px solid #eee; }
 .feed-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.3s; }
 .feed-item:hover img { transform: scale(1.05); }
-
-/* CONTROLE DO VER MAIS */
 .feed-item.hidden { display: none; }
-.btn-outline { border: 2px solid var(--primary); color: var(--primary); background: transparent; padding: 12px 35px; font-weight: bold; border-radius: 5px; cursor: pointer; transition: 0.3s; margin-top: 20px; }
+
+.btn-outline { border: 2px solid var(--primary); color: var(--primary); background: none; padding: 12px 30px; border-radius: 5px; cursor: pointer; font-weight: bold; transition: 0.3s; }
 .btn-outline:hover { background: var(--primary); color: #fff; }
 
-/* FOOTER */
-.footer-modern { background: #fff; border-top: 1px solid #eee; padding: 60px 0 20px; }
-.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
-.footer-logo { height: 80px; margin-bottom: 20px; }
-.footer-bottom { text-align: center; margin-top: 40px; color: #aaa; font-size: 0.8rem; }
+/* LIGHTBOX */
+#zoom-overlay { position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); display:none; justify-content:center; align-items:center; z-index:1000; }
+#zoom-img { max-width: 90%; max-height: 80%; border-radius: 10px; }
 
-/* ZOOM LIGHTBOX */
-#zoom-overlay { position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); display:none; justify-content:center; align-items:center; z-index:1000; }
-#zoom-img { max-width: 90%; max-height: 85%; border-radius: 10px; }
-
-@media (max-width: 768px) {
-    .banner-flex { flex-direction: column; text-align: center; }
-    .insta-feed { grid-template-columns: 1fr 1fr; }
-    .nav-logo { height: 60px; }
-}
+@media (max-width: 768px) { .banner-flex { flex-direction: column; text-align: center; } .insta-feed { grid-template-columns: 1fr 1fr; } .nav-logo { height: 60px; } }
