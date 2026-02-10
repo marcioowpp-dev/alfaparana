@@ -1,4 +1,4 @@
-// Ver Mais Projetos
+// Botão Ver Mais
 document.getElementById('btn-ver-mais')?.addEventListener('click', function() {
     const hiddenItems = document.querySelectorAll('.feed-item.hidden');
     for (let i = 0; i < 6 && i < hiddenItems.length; i++) {
@@ -9,7 +9,7 @@ document.getElementById('btn-ver-mais')?.addEventListener('click', function() {
     }
 });
 
-// Zoom Lightbox
+// Zoom da Galeria
 const zoomOverlay = document.getElementById('zoom-overlay');
 const zoomImg = document.getElementById('zoom-img');
 
@@ -18,4 +18,6 @@ function openZoom(el) {
     zoomImg.src = el.src;
 }
 
-document.addEventListener('keydown', (e) => { if (e.key === "Escape") zoomOverlay.style.display = 'none'; });
+document.addEventListener('keydown', (e) => {
+    if (e.key === "Escape") zoomOverlay.style.display = 'none';
+});
