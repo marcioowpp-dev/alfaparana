@@ -2,69 +2,96 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora Alfa Paraná</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Calculadora Interna | Alfa Paraná</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        body { padding: 20px; display: flex; flex-direction: column; align-items: center; background: #f4f7f6; }
-        .calc-card { background: #fff; padding: 25px; border-radius: 20px; width: 100%; max-width: 450px; border: 1px solid #eee; }
+        body { background: #f4f7f6; padding: 15px; display: flex; flex-direction: column; align-items: center; }
+        .calc-container { background: #fff; padding: 25px; border-radius: 20px; width: 100%; max-width: 500px; border: 1px solid #eee; box-shadow: 0 4px 15px rgba(0,0,0,0.03); }
+        h2 { font-weight: 900; text-align: center; margin-bottom: 20px; font-size: 1.2rem; text-transform: uppercase; }
         .form-group { margin-bottom: 15px; }
-        input, select { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; background: #fafafa; font-size: 16px; }
-        .grid-inputs { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
-        .btn-calc { width: 100%; background: #1a1a1a; color: #fff; padding: 15px; border: none; border-radius: 10px; font-weight: 800; text-transform: uppercase; cursor: pointer; margin-top: 10px; }
-        .resumo { width: 100%; max-width: 450px; margin-top: 20px; }
-        .total-box { background: #ffd200; padding: 20px; border-radius: 15px; text-align: center; margin-top: 10px; }
-        @media (max-width: 400px) { .grid-inputs { grid-template-columns: 1fr; } }
+        label { display: block; margin-bottom: 8px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: #666; }
+        select, input { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 12px; background: #fafafa; font-size: 16px; font-family: 'Inter', sans-serif; outline: none; }
+        .grid-inputs { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 15px; }
+        .btn-add { width: 100%; background: #1a1a1a; color: #fff; padding: 18px; border: none; border-radius: 12px; font-weight: 800; text-transform: uppercase; cursor: pointer; }
+        .resumo-box { width: 100%; max-width: 500px; margin-top: 20px; display: none; }
+        .total-card { background: var(--accent); padding: 20px; border-radius: 15px; text-align: center; margin-top: 15px; }
+        @media (max-width: 480px) { .grid-inputs { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
-<div class="calc-card">
-    <h2 style="text-align:center; font-weight:900; margin-bottom:20px;">CALCULADORA</h2>
+<div class="calc-container">
+    <h2>Calculadora Interna</h2>
     <div class="form-group">
-        <label>Produto</label>
+        <label>Selecione o Produto</label>
         <select id="produto">
-            <option value="64">Lona Front 440g (R$ 64)</option>
-            <option value="74">Lona Front c/ Acab. (R$ 74)</option>
-            <option value="84">Adesivo Perfurado (R$ 84)</option>
-            <option value="110">Adesivo c/ Laminação (R$ 110)</option>
+            <optgroup label="Lonas">
+                <option value="64">Lona Front 440g Sem Acab. (R$ 64)</option>
+                <option value="74">Lona Front 440g Com Acab. (R$ 74)</option>
+                <option value="88">Lona Back 440g Sem Acab. (R$ 88)</option>
+                <option value="98">Lona Back 440g Com Acab. (R$ 98)</option>
+            </optgroup>
+            <optgroup label="Adesivos">
+                <option value="64">Adesivo Promo (R$ 64)</option>
+                <option value="84">Adesivo Perfurado (R$ 84)</option>
+                <option value="82">Adesivo Blackout (R$ 82)</option>
+                <option value="140">Adesivo Premium (R$ 140)</option>
+                <option value="94">Adesivo Promo + Corte (R$ 94)</option>
+                <option value="110">Adesivo Promo + Laminação (R$ 110)</option>
+                <option value="126">Adesivo Promo + Lam. + Corte (R$ 126)</option>
+                <option value="106">Adesivo Blackout + Laminação (R$ 106)</option>
+                <option value="240">Adesivo Premium + Laminação (R$ 240)</option>
+            </optgroup>
         </select>
     </div>
+
     <div class="grid-inputs">
-        <input type="number" id="larg" placeholder="Larg.">
-        <input type="number" id="alt" placeholder="Alt.">
-        <input type="number" id="qtd" value="1">
+        <div class="form-group"><label>Largura (cm)</label><input type="number" id="largura" placeholder="0"></div>
+        <div class="form-group"><label>Altura (cm)</label><input type="number" id="altura" placeholder="0"></div>
+        <div class="form-group"><label>Qtd</label><input type="number" id="quantidade" value="1"></div>
     </div>
-    <button class="btn-calc" onclick="calcular()">Adicionar Item</button>
+
+    <button class="btn-add" onclick="adicionarItem()">Adicionar</button>
 </div>
 
-<div class="resumo" id="resumo" style="display:none;">
-    <div id="itens"></div>
-    <div class="total-box">
+<div class="resumo-box" id="resumo-box">
+    <div id="lista-itens"></div>
+    <div class="total-card">
         <small>TOTAL ESTIMADO</small>
-        <h3 id="total-val">R$ 0,00</h3>
+        <h3 id="total-geral">R$ 0,00</h3>
     </div>
-    <button onclick="location.reload()" style="width:100%; background:none; border:none; color:red; margin-top:10px; cursor:pointer;">Limpar Tudo</button>
+    <a href="index.html" style="display:block; text-align:center; margin-top:20px; color:#888; text-decoration:none; font-size:0.8rem;">← Voltar para a página inicial</a>
 </div>
-
-<a href="index.html" style="margin-top:30px; color:#666; text-decoration:none; font-size:0.8rem;">← Voltar ao Site</a>
 
 <script>
-    let total = 0;
-    function calcular() {
-        const p = parseFloat(document.getElementById('produto').value);
-        const l = parseFloat(document.getElementById('larg').value) || 0;
-        const a = parseFloat(document.getElementById('alt').value) || 0;
-        const q = parseInt(document.getElementById('qtd').value) || 1;
-        
-        if(l > 0 && a > 0) {
-            let valor = (l * a / 10000) * p * q;
-            total += valor;
-            document.getElementById('resumo').style.display = 'block';
-            document.getElementById('itens').innerHTML += `<p style="border-bottom:1px solid #eee; padding:5px 0;">Item adicionado: R$ ${valor.toFixed(2)}</p>`;
-            document.getElementById('total-val').innerText = "R$ " + (total + 80).toLocaleString('pt-br',{minimumFractionDigits:2});
+    let itens = [];
+    function adicionarItem() {
+        const sel = document.getElementById('produto');
+        const preco = parseFloat(sel.value);
+        const nome = sel.options[sel.selectedIndex].text;
+        const l = parseFloat(document.getElementById('largura').value) || 0;
+        const a = parseFloat(document.getElementById('altura').value) || 0;
+        const q = parseInt(document.getElementById('quantidade').value) || 1;
+
+        if (l > 0 && a > 0) {
+            const valor = (l * a / 10000) * preco * q;
+            itens.push({ nome, valor });
+            atualizar();
         }
+    }
+
+    function atualizar() {
+        const lista = document.getElementById('lista-itens');
+        let total = 0;
+        lista.innerHTML = "";
+        itens.forEach(it => {
+            total += it.valor;
+            lista.innerHTML += `<div style="padding:10px; border-bottom:1px solid #eee;"><b>${it.nome}</b>: R$ ${it.valor.toFixed(2)}</div>`;
+        });
+        document.getElementById('resumo-box').style.display = 'block';
+        document.getElementById('total-geral').innerText = "R$ " + (total + 80).toLocaleString('pt-br', {minimumFractionDigits: 2});
     }
 </script>
 </body>
