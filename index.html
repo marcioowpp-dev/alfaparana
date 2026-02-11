@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alfa Paraná | Impressão Criativa</title>
+    <title>Alfa Paraná | Impressão Digital</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -14,106 +13,56 @@
 
 <header class="navbar">
     <div class="container nav-content">
-        <a href="#"><img src="https://i.ibb.co/FLmLhR75/ALFA-PARANA-29.png" alt="Alfa Paraná" class="nav-logo"></a>
-        <nav id="menu">
-            <a href="#servicos">Serviços</a>
+        <a href="#"><img src="https://i.ibb.co/FLmLhR75/ALFA-PARANA-29.png" class="nav-logo"></a>
+        <nav>
             <a href="#portfolio">Portfólio</a>
-            <a href="#" class="nav-btn-adm">Acesso Restrito</a>
-            <a href="https://wa.me/5541995022336" target="_blank" class="nav-btn-wa">WhatsApp</a>
+            <a href="#" class="nav-btn-adm" onclick="abrirSenha()">Painel</a>
+            <a href="https://wa.me/5541995022336" class="nav-btn-wa">WhatsApp</a>
         </nav>
     </div>
 </header>
 
-<main>
-    <section class="hero-light">
-        <div class="container hero-grid">
-            <div class="hero-text reveal">
-                <span class="badge-tech">COMUNICAÇÃO VISUAL</span>
-                <h1>IMPRESSÃO <br><span class="highlight">CRIATIVA</span></h1>
-                <p>Soluções Gráficas para destacar sua marca com excelência em <strong>Paranaguá, Curitiba e Região.</strong></p>
-                <div class="hero-btns">
-                    <a href="https://wa.me/5541995022336" target="_blank" class="btn-main">Orçamento via WhatsApp</a>
-                </div>
-            </div>
-            <div class="hero-img reveal">
-                <img src="https://i.ibb.co/m5w9sTK3/54.png" alt="Destaque Alfa Paraná">
-            </div>
+<main class="container">
+    <section class="hero-grid reveal">
+        <div class="hero-text">
+            <h1>ALFA <br><span class="highlight">PARANÁ</span></h1>
+            <p>Comunicação Visual de Alto Impacto.</p>
+        </div>
+        <div class="hero-img">
+            <img src="https://i.ibb.co/m5w9sTK3/54.png">
         </div>
     </section>
 
-    <section id="servicos" class="section-padding">
-        <div class="container">
-            <div class="section-header reveal">
-                <h2>NOSSOS SERVIÇOS</h2>
-                <div class="line-accent"></div>
-            </div>
-            <div class="services-grid">
-                <div class="service-card reveal">
-                    <div class="icon-box">🚩</div>
-                    <h3>COMUNICAÇÃO VISUAL</h3>
-                    <p>Fachadas em ACM, letras caixa e luminosos.</p>
-                </div>
-                <div class="service-card reveal">
-                    <div class="icon-box">💎</div>
-                    <h3>IMPRESSÃO DIGITAL</h3>
-                    <p>Adesivagem de frotas, vitrines e banners.</p>
-                </div>
-                <div class="service-card reveal">
-                    <div class="icon-box">🎨</div>
-                    <h3>DESIGN & ARTE</h3>
-                    <p>Desenvolvimento de projetos visuais estratégicos.</p>
-                </div>
-            </div>
+    <section id="portfolio">
+        <div class="portfolio-grid">
+            <div class="item reveal"><img src="https://i.ibb.co/m5w9sTK3/54.png" onclick="openZoom(this)"></div>
+            <div class="item reveal"><img src="https://i.ibb.co/39K1Pk9S/53.png" onclick="openZoom(this)"></div>
+            <div class="item reveal"><img src="https://i.ibb.co/cKBF25Gm/52.png" onclick="openZoom(this)"></div>
+            <div class="item reveal"><img src="https://i.ibb.co/5ydj1cv/51.png" onclick="openZoom(this)"></div>
+            <div class="item reveal"><img src="https://i.ibb.co/fzqYYNMF/50.png" onclick="openZoom(this)"></div>
+            <div class="item reveal"><img src="https://i.ibb.co/21yMKbsB/49.png" onclick="openZoom(this)"></div>
+            <div class="item reveal hidden"><img src="https://i.ibb.co/G3Xm8D8p/48.png" onclick="openZoom(this)"></div>
+            <div class="item reveal hidden"><img src="https://i.ibb.co/9kxHmqm6/47.png" onclick="openZoom(this)"></div>
+            <div class="item reveal hidden"><img src="https://i.ibb.co/YBJYf1G9/46.png" onclick="openZoom(this)"></div>
+            <div class="item reveal hidden"><img src="https://i.ibb.co/6R8mR8V8/45.png" onclick="openZoom(this)"></div>
+            <div class="item reveal hidden"><img src="https://i.ibb.co/b5fPzS53/44.png" onclick="openZoom(this)"></div>
+            <div class="item reveal hidden"><img src="https://i.ibb.co/vxS0C52h/43.png" onclick="openZoom(this)"></div>
+            <div class="item reveal hidden"><img src="https://i.ibb.co/Q3S0Vz4S/42.png" onclick="openZoom(this)"></div>
+            <div class="item reveal hidden"><img src="https://i.ibb.co/pBY0vC4p/41.png" onclick="openZoom(this)"></div>
+            <div class="item reveal hidden"><img src="https://i.ibb.co/fG2S6XvT/40.png" onclick="openZoom(this)"></div>
+            <div class="item reveal hidden"><img src="https://i.ibb.co/LzNfS2Z8/39.png" onclick="openZoom(this)"></div>
+            <div class="item reveal hidden"><img src="https://i.ibb.co/C5fR8V8Z/38.png" onclick="openZoom(this)"></div>
+            <div class="item reveal hidden"><img src="https://i.ibb.co/tM5X8Z8P/37.png" onclick="openZoom(this)"></div>
+            <div class="item reveal hidden"><img src="https://i.ibb.co/vX5R8Z8D/36.png" onclick="openZoom(this)"></div>
+            <div class="item reveal hidden"><img src="https://i.ibb.co/S5fR8V8K/35.png" onclick="openZoom(this)"></div>
+            <div class="item reveal hidden"><img src="https://i.ibb.co/R5fR8V8L/34.png" onclick="openZoom(this)"></div>
         </div>
-    </section>
-
-    <section id="portfolio" class="section-padding">
-        <div class="container">
-            <div class="section-header reveal">
-                <h2>PORTFÓLIO</h2>
-                <div class="line-accent"></div>
-            </div>
-            <div class="portfolio-grid">
-                <div class="item reveal"><img src="https://i.ibb.co/m5w9sTK3/54.png" onclick="openZoom(this)"></div>
-                <div class="item reveal"><img src="https://i.ibb.co/39K1Pk9S/53.png" onclick="openZoom(this)"></div>
-                <div class="item reveal"><img src="https://i.ibb.co/cKBF25Gm/52.png" onclick="openZoom(this)"></div>
-                <div class="item reveal"><img src="https://i.ibb.co/5ydj1cv/51.png" onclick="openZoom(this)"></div>
-                <div class="item reveal"><img src="https://i.ibb.co/fzqYYNMF/50.png" onclick="openZoom(this)"></div>
-                <div class="item reveal"><img src="https://i.ibb.co/21yMKbsB/49.png" onclick="openZoom(this)"></div>
-            </div>
-        </div>
+        <button id="btn-load-more" class="btn-load">VER MAIS PROJETOS</button>
     </section>
 </main>
 
-<footer class="footer-clean">
-    <div class="container">
-        <div class="footer-top">
-            <div class="footer-brand">
-                <img src="https://i.ibb.co/FLmLhR75/ALFA-PARANA-29.png" alt="Alfa Paraná" class="footer-logo">
-                <p>(41) 99502-2336</p>
-                <p>alfaparana.png@gmail.com</p>
-            </div>
-            <div class="footer-hours">
-                <h4>HORÁRIOS</h4>
-                <p>Segunda a Sexta: 08:30 às 18:00</p>
-            </div>
-        </div>
-        <div class="footer-bottom"><p>© 2026 Alfa Paraná.</p></div>
-    </div>
-</footer>
+<div id="zoom-overlay" onclick="closeZoom()"><img id="zoom-img"></div>
 
-<div id="modal-admin" class="modal-overlay">
-    <div class="modal-content">
-        <h3>Acesso Restrito</h3>
-        <input type="password" id="input-senha" placeholder="Senha">
-        <div class="modal-buttons">
-            <button onclick="verificarSenha()" class="btn-confirmar">Entrar</button>
-            <button onclick="fecharModal()" class="btn-cancelar">Sair</button>
-        </div>
-    </div>
-</div>
-
-<div id="zoom-overlay" onclick="this.style.display='none'"><img id="zoom-img"></div>
 <script src="script.js"></script>
 </body>
 </html>
