@@ -1,25 +1,27 @@
-// Revelação ao Rolar
+// Efeito de Surgimento (Reveal)
 const reveal = () => {
-    const reveals = document.querySelectorAll('.reveal');
-    reveals.forEach(el => {
+    const items = document.querySelectorAll('.reveal');
+    items.forEach(item => {
         const windowHeight = window.innerHeight;
-        const revealTop = el.getBoundingClientRect().top;
-        if (revealTop < windowHeight - 100) { el.classList.add('active'); }
+        const revealTop = item.getBoundingClientRect().top;
+        if (revealTop < windowHeight - 100) {
+            item.classList.add('active');
+        }
     });
 };
 window.addEventListener('scroll', reveal);
-reveal(); // Iniciar ao carregar
+reveal(); // Executar uma vez no início
 
-// Carregar Mais Fotos
+// Botão Ver Mais
 document.getElementById('btn-load-more')?.addEventListener('click', function() {
-    document.querySelectorAll('.item.hidden').forEach(item => {
-        item.classList.remove('hidden');
-        item.classList.add('active');
+    document.querySelectorAll('.item.hidden').forEach(el => {
+        el.classList.remove('hidden');
+        el.classList.add('active');
     });
     this.style.display = 'none';
 });
 
-// Zoom Original
+// Funções de Zoom
 function openZoom(el) {
     const overlay = document.getElementById('zoom-overlay');
     const img = document.getElementById('zoom-img');
@@ -27,7 +29,6 @@ function openZoom(el) {
     img.src = el.src;
     document.body.style.overflow = 'hidden';
 }
-
 function closeZoom() {
     document.getElementById('zoom-overlay').style.display = 'none';
     document.body.style.overflow = 'auto';
@@ -35,7 +36,6 @@ function closeZoom() {
 
 // Senha Acesso
 function abrirSenha() {
-    const s = prompt("Senha de Acesso:");
-    if(s === "unimedhe12") window.location.href = "admin.html";
-    else if(s) alert("Incorreta");
+    const pass = prompt("Senha de acesso:");
+    if(pass === "unimedhe12") window.location.href = "admin.html";
 }
