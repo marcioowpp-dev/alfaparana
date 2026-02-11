@@ -3,122 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Painel Administrativo | Alfa Paraná</title>
+    <title>Painel Alfa Paraná | Orçamentos</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #ffd200;
-            --bg-color: #121212;
-            --card-bg: #1e1e1e;
-            --text-main: #ffffff;
-            --input-bg: #2d2d2d;
-            --border: #333;
+            --bg-light: #f4f7f6;
+            --accent: #ffd200;
+            --primary: #1a1a1a;
+            --text-muted: #666;
+            --border: #e0e0e0;
+            --card: #ffffff;
         }
 
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background-color: var(--bg-color); 
-            color: var(--text-main); 
-            margin: 0; 
-            padding: 15px; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+        body {
+            background: var(--bg-light);
+            color: var(--primary);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             min-height: 100vh;
         }
 
-        /* Estilo da Tela de Bloqueio Original */
-        #lock-screen {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--bg-color); display: flex; flex-direction: column;
-            justify-content: center; align-items: center; z-index: 9999;
-        }
-        .lock-box { background: var(--card-bg); padding: 40px; border-radius: 20px; border: 1px solid var(--primary-color); text-align: center; width: 85%; max-width: 320px; }
-        .lock-box img { height: 40px; margin-bottom: 20px; }
-        .lock-box input { padding: 14px; border-radius: 10px; border: 1px solid var(--border); margin-bottom: 15px; width: 100%; text-align: center; background: var(--input-bg); color: white; font-size: 16px; box-sizing: border-box; }
-        .lock-box button { background: var(--primary-color); border: none; padding: 14px; border-radius: 10px; font-weight: 900; cursor: pointer; width: 100%; text-transform: uppercase; }
-
-        /* Container Principal */
-        .container { 
-            background: var(--card-bg); padding: 25px; border-radius: 20px; 
-            width: 100%; max-width: 500px; border: 1px solid var(--border); 
-            box-sizing: border-box; display: none; margin-top: 20px;
+        .header-adm {
+            text-align: center;
+            margin: 20px 0 30px;
+            width: 100%;
+            max-width: 500px;
         }
 
-        h2 { color: var(--primary-color); text-align: center; font-weight: 900; text-transform: uppercase; margin-bottom: 25px; font-size: 1.2rem; }
-        
-        .form-group { margin-bottom: 18px; }
-        label { display: block; margin-bottom: 8px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: #888; }
-        
-        select, input { 
-            width: 100%; padding: 14px; border: 1px solid var(--border); border-radius: 12px; 
-            background: var(--input-bg); color: white; font-size: 16px; outline: none; box-sizing: border-box;
+        .header-adm img { height: 45px; margin-bottom: 10px; }
+        .header-adm h2 { font-weight: 900; font-size: 1.2rem; text-transform: uppercase; margin: 0; letter-spacing: -0.5px; }
+
+        /* Container Principal com Ajuste Mobile */
+        .container {
+            background: var(--card);
+            padding: 25px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 500px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
         }
 
-        .unit-selector { display: flex; background: #000; padding: 4px; border-radius: 12px; margin-bottom: 20px; border: 1px solid var(--border); }
-        .unit-selector label { flex: 1; text-align: center; cursor: pointer; margin: 0; }
+        .form-group { margin-bottom: 1.2rem; }
+        label { display: block; margin-bottom: 8px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: var(--text-muted); }
+
+        select, input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: #fafafa;
+            font-size: 16px; /* Evita zoom automático no iPhone */
+            font-family: 'Inter', sans-serif;
+            outline: none;
+        }
+
+        /* Grid que se ajusta no Mobile */
+        .grid-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .unit-selector {
+            display: flex;
+            background: #eee;
+            padding: 4px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+        .unit-selector label { flex: 1; margin: 0; }
         .unit-selector input { display: none; }
-        .unit-selector span { display: block; padding: 10px; border-radius: 10px; font-weight: 800; font-size: 0.8rem; color: #666; }
-        .unit-selector input:checked + span { background: var(--primary-color); color: #000; }
+        .unit-selector span {
+            display: block;
+            padding: 8px;
+            text-align: center;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: #888;
+        }
+        .unit-selector input:checked + span { background: var(--accent); color: var(--primary); }
 
-        .grid-inputs { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 15px; }
-
-        .checkbox-card { 
-            background: #262626; padding: 15px; border-radius: 12px; display: flex; 
-            align-items: center; gap: 12px; border: 1px solid var(--border); 
-            margin-bottom: 10px; cursor: pointer; font-size: 0.9rem; font-weight: 600; 
+        .checkbox-card {
+            background: #fff;
+            padding: 15px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: 1px solid var(--border);
+            margin-bottom: 10px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
         }
 
-        .btn-add { 
-            width: 100%; background: var(--primary-color); color: #000; padding: 18px; 
-            border: none; border-radius: 12px; font-weight: 900; text-transform: uppercase; 
-            cursor: pointer; margin-top: 10px; transition: 0.3s;
+        .btn-add {
+            width: 100%;
+            background: var(--primary);
+            color: #fff;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-top: 10px;
+            cursor: pointer;
         }
 
-        /* Resumo */
-        .resumo-box { width: 100%; max-width: 500px; margin-top: 25px; display: none; box-sizing: border-box; }
-        .item-row { background: var(--card-bg); padding: 15px; border-radius: 15px; border: 1px solid var(--border); margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
-        
-        .total-card { background: var(--primary-color); padding: 25px; border-radius: 20px; text-align: center; color: #000; }
+        /* Resumo do Pedido Estilo Card */
+        .resumo-container {
+            width: 100%;
+            max-width: 500px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .item-adicionado {
+            background: #fff;
+            padding: 15px;
+            border-radius: 15px;
+            border: 1px solid var(--border);
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .total-card {
+            background: var(--accent);
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 15px;
+        }
+        .total-card small { font-weight: 700; text-transform: uppercase; font-size: 0.7rem; }
         .total-card h3 { font-size: 2.2rem; margin: 5px 0 0; font-weight: 900; }
 
-        .btn-voltar { margin: 30px 0; color: #666; text-decoration: none; font-size: 0.8rem; font-weight: 700; text-align: center; }
+        .btn-limpar {
+            width: 100%;
+            background: none;
+            border: none;
+            color: #ff4444;
+            padding: 15px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
 
-        @media (max-width: 480px) { .grid-inputs { grid-template-columns: 1fr; } }
+        .btn-voltar { margin: 20px 0; color: var(--text-muted); text-decoration: none; font-size: 0.8rem; font-weight: 600; }
+
+        /* AJUSTES MOBILE ESPECÍFICOS */
+        @media (max-width: 400px) {
+            .grid-inputs { grid-template-columns: 1fr; } /* Empilha largura/altura/qtd no telemóvel pequeno */
+            .container { padding: 15px; }
+            .header-adm h2 { font-size: 1rem; }
+        }
     </style>
 </head>
 <body>
 
-<div id="lock-screen">
-    <div class="lock-box">
-        <img src="https://i.ibb.co/FLmLhR75/ALFA-PARANA-29.png" alt="Alfa Paraná">
-        <input type="password" id="pass" placeholder="Senha Administrativa">
-        <button onclick="checkPass()">ACESSAR PAINEL</button>
-    </div>
+<div class="header-adm">
+    <img src="https://i.ibb.co/FLmLhR75/ALFA-PARANA-29.png" alt="Alfa Paraná">
+    <h2>Calculadora Interna</h2>
 </div>
 
-<div class="container" id="main-container">
-    <h2>CALCULADORA DE ORÇAMENTOS</h2>
-    
+<div class="container">
     <div class="form-group">
         <label>Produto</label>
         <select id="produto">
             <optgroup label="Lonas">
-                <option value="64">Lona Front 440g Sem Acab. (R$ 64)</option>
-                <option value="74">Lona Front 440g Com Acab. (R$ 74)</option>
-                <option value="88">Lona Back 440g Sem Acab. (R$ 88)</option>
-                <option value="98">Lona Back 440g Com Acab. (R$ 98)</option>
+                <option value="Lona Frontlight 440g S/ Acab.">Lona Front 440g Sem Acab. (R$ 64)</option>
+                <option value="Lona Frontlight 440g C/ Acab.">Lona Front 440g Com Acab. (R$ 74)</option>
             </optgroup>
             <optgroup label="Adesivos">
-                <option value="64">Adesivo Promo (R$ 64)</option>
-                <option value="84">Adesivo Perfurado (R$ 84)</option>
-                <option value="82">Adesivo Blackout (R$ 82)</option>
-                <option value="140">Adesivo Premium (R$ 140)</option>
-                <option value="94">Adesivo Promo + Corte (R$ 94)</option>
-                <option value="110">Adesivo Promo + Laminação (R$ 110)</option>
-                <option value="126">Adesivo Promo + Lam. + Corte (R$ 126)</option>
-                <option value="106">Adesivo Blackout + Laminação (R$ 106)</option>
-                <option value="240">Adesivo Premium + Laminação (R$ 240)</option>
+                <option value="Adesivo Promo">Adesivo Promo (R$ 64)</option>
+                <option value="Adesivo Perfurado">Adesivo Perfurado (R$ 84)</option>
+                <option value="Adesivo Promo + Laminação">Adesivo Promo + Laminação (R$ 110)</option>
             </optgroup>
         </select>
     </div>
@@ -135,93 +206,77 @@
     </div>
 
     <label class="checkbox-card">
-        <input type="checkbox" id="checkMetalon"> 🏗️ Estrutura de Metalon
+        <input type="checkbox" id="checkFachada"> 🏗️ Estrutura Metalon
     </label>
 
     <label class="checkbox-card">
         <input type="checkbox" id="checkMaoObra" onchange="document.getElementById('vMao').style.display=this.checked?'block':'none'"> 👷 Mão de Obra
     </label>
-    <input type="number" id="vMao" style="display:none; margin-bottom:15px;" placeholder="Valor da Mão de Obra (R$)">
+    
+    <input type="number" id="vMao" style="display:none; margin-bottom:15px;" placeholder="Valor R$">
 
-    <button class="btn-add" onclick="adicionarItem()">ADICIONAR AO PEDIDO</button>
+    <button class="btn-add" onclick="adicionarItem()">Adicionar</button>
 </div>
 
-<div class="resumo-box" id="resumo-box">
+<div class="resumo-container" id="resumo-box">
     <div id="lista-itens"></div>
     <div class="total-card">
-        <small>VALOR TOTAL ESTIMADO</small>
+        <small>Total do Pedido</small>
         <h3 id="valor-total-geral">R$ 0,00</h3>
     </div>
-    <button style="width:100%; background:none; border:none; color:#ff4444; margin-top:20px; cursor:pointer; font-weight:bold; text-transform:uppercase;" onclick="location.reload()">Limpar Orçamento</button>
+    <button class="btn-limpar" onclick="limparPedido()">Limpar Tudo</button>
 </div>
 
-<a href="index.html" class="btn-voltar">← Voltar para o site</a>
+<a href="index.html" class="btn-voltar">← Voltar ao Site</a>
 
 <script>
-    let pedido = [];
     const TAXA_COLETA = 80.00;
-    const PRECO_BARRA = 115.00;
+    const PRECO_BARRA_METALON = 115.00;
+    const TABELA = {
+        "Lona Frontlight 440g S/ Acab.": 64, "Lona Frontlight 440g C/ Acab.": 74,
+        "Adesivo Promo": 64, "Adesivo Perfurado": 84, "Adesivo Promo + Laminação": 110
+    };
 
-    function checkPass() {
-        const pass = document.getElementById('pass').value;
-        if(pass === "unimedhe12") {
-            document.getElementById('lock-screen').style.display = 'none';
-            document.getElementById('main-container').style.display = 'block';
-        } else {
-            alert("Senha Incorreta!");
-        }
-    }
+    let pedido = [];
 
     function adicionarItem() {
-        const select = document.getElementById('produto');
-        const prodNome = select.options[select.selectedIndex].text;
-        const precoM2 = parseFloat(select.value);
+        const prod = document.getElementById('produto').value;
         const unit = document.querySelector('input[name="unit"]:checked').value;
-        let larg = parseFloat(document.getElementById('largura').value) || 0;
-        let alt = parseFloat(document.getElementById('altura').value) || 0;
-        let qtd = parseInt(document.getElementById('quantidade').value) || 1;
-
-        if(larg <= 0 || alt <= 0) {
-            alert("Por favor, insira as medidas!");
-            return;
-        }
-
-        let lM = (unit === "cm") ? larg / 100 : larg;
-        let aM = (unit === "cm") ? alt / 100 : alt;
+        let l = parseFloat(document.getElementById('largura').value) || 0;
+        let a = parseFloat(document.getElementById('altura').value) || 0;
+        let q = parseInt(document.getElementById('quantidade').value) || 1;
         
-        let vMaterial = (lM * aM) * precoM2 * qtd;
-        let vMetalon = document.getElementById('checkMetalon').checked ? Math.ceil(((lM + aM) * 2) * qtd / 6) * PRECO_BARRA : 0;
-        let vMao = document.getElementById('checkMaoObra').checked ? parseFloat(document.getElementById('vMao').value) || 0 : 0;
+        if(l <= 0 || a <= 0) return alert("Insira as medidas");
 
-        pedido.push({ 
-            nome: prodNome, 
-            resumo: `${qtd}x (${larg}x${alt}${unit})`, 
-            total: vMaterial + vMetalon + vMao 
-        });
+        let lm = (unit === "cm") ? l / 100 : l;
+        let am = (unit === "cm") ? a / 100 : a;
+        
+        let vMat = (lm * am) * (TABELA[prod] || 64) * q;
+        let barras = document.getElementById('checkFachada').checked ? Math.ceil(((lm+am)*2)*q/6) : 0;
+        let vMao = document.getElementById('checkMaoObra').checked ? parseFloat(document.getElementById('vMao').value)||0 : 0;
+
+        pedido.push({ prod, desc: `${l}x${a}${unit}`, valor: vMat + (barras*PRECO_BARRA_METALON) + vMao });
         
         atualizar();
+        document.getElementById('largura').value=''; document.getElementById('altura').value='';
     }
 
     function atualizar() {
         const lista = document.getElementById('lista-itens');
-        let soma = 0;
+        let total = 0;
         lista.innerHTML = "";
-        
         pedido.forEach((it, i) => {
-            soma += it.total;
-            lista.innerHTML += `
-                <div class="item-row">
-                    <div>
-                        <b style="font-size:0.9rem;">${it.nome}</b><br>
-                        <small style="color:#888;">${it.resumo} - R$ ${it.total.toFixed(2)}</small>
-                    </div>
-                    <button onclick="pedido.splice(${i},1);atualizar()" style="border:none;background:none;color:#ff4444;font-size:1.2rem;cursor:pointer;padding:10px;">✕</button>
-                </div>`;
+            total += it.valor;
+            lista.innerHTML += `<div class="item-adicionado">
+                <div><b>${it.prod}</b><br><small>${it.desc} - R$ ${it.valor.toFixed(2)}</small></div>
+                <button onclick="pedido.splice(${i},1);atualizar()" style="border:none;background:none;color:#ccc;font-size:1.2rem;cursor:pointer;">✕</button>
+            </div>`;
         });
-        
-        document.getElementById('resumo-box').style.display = pedido.length ? 'block' : 'none';
-        document.getElementById('valor-total-geral').innerText = "R$ " + (soma > 0 ? soma + TAXA_COLETA : 0).toLocaleString('pt-br',{minimumFractionDigits:2});
+        document.getElementById('resumo-box').style.display = pedido.length ? "block" : "none";
+        document.getElementById('valor-total-geral').innerText = "R$ " + (total > 0 ? total + TAXA_COLETA : 0).toLocaleString('pt-br',{minimumFractionDigits:2});
     }
+
+    function limparPedido() { pedido = []; atualizar(); }
 </script>
 </body>
 </html>

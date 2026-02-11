@@ -1,34 +1,56 @@
-// Efeito de revelação ao rolar a página
-const reveal = () => {
-    const reveals = document.querySelectorAll('.reveal');
-    reveals.forEach(el => {
-        const windowHeight = window.innerHeight;
-        const revealTop = el.getBoundingClientRect().top;
-        if (revealTop < windowHeight - 100) el.classList.add('active');
-    });
-};
-window.addEventListener('scroll', reveal);
-reveal(); // Gatilho inicial
+// --- MODAL SENHA ---
+const modal = document.getElementById('modal-admin');
+const inputSenha = document.getElementById('input-senha');
 
-// Galeria - Carregar Mais
-document.getElementById('loadMore')?.addEventListener('click', function() {
-    document.querySelectorAll('.item.hidden').forEach(it => {
-        it.classList.remove('hidden');
-        it.classList.add('active');
+document.querySelector('.nav-btn-adm')?.addEventListener('click', function(e) {
+    e.preventDefault();
+    modal.style.display = 'flex';
+    inputSenha.focus();
+});
+
+function fecharModal() {
+    modal.style.display = 'none';
+    inputSenha.value = '';
+}
+
+function verificarSenha() {
+    if (inputSenha.value === "unimedhe12") {
+        // Em vez de _top, usamos _self para abrir dentro do próprio quadro
+        // Ou apenas redirecionamos a localização
+        window.location.href = "admin.html";
+    } else {
+        alert("Senha incorreta!");
+        inputSenha.value = '';
+    }
+}
+
+// --- VER MAIS ---
+document.getElementById('btn-load-more')?.addEventListener('click', function() {
+    document.querySelectorAll('.item.hidden').forEach(item => {
+        item.classList.remove('hidden');
+        item.classList.add('reveal', 'active');
     });
     this.style.display = 'none';
 });
 
-// Zoom Original
+// --- ZOOM ---
 function openZoom(el) {
     const overlay = document.getElementById('zoom-overlay');
     const img = document.getElementById('zoom-img');
-    overlay.style.display = 'flex';
-    img.src = el.src;
+    if (overlay && img) {
+        overlay.style.display = 'flex';
+        img.src = el.src;
+        document.body.style.overflow = 'hidden';
+    }
 }
 
-// Senha para Painel
-function abrirPainel() {
-    const s = prompt("Senha:");
-    if(s === "unimedhe12") window.location.href = "admin.html";
-}
+// --- REVEAL ---
+const reveal = () => {
+    document.querySelectorAll('.reveal').forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight - 50) {
+            el.classList.add('active');
+        }
+    });
+};
+window.addEventListener('scroll', reveal);
+window.addEventListener('load', reveal);
