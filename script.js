@@ -1,62 +1,54 @@
-// --- PROTEÇÃO DE ACESSO RESTRITO (Sincronizado com Google Sites) ---
-document.addEventListener('click', function(e) {
-    // Verifica se o elemento clicado possui a classe do botão administrativo
-    if (e.target && e.target.classList.contains('nav-btn-adm')) {
-        e.preventDefault(); 
-        
-        const senhaCorreta = "unimedhe12"; // Senha definida por você
-        const senhaDigitada = prompt("Acesso Restrito. Digite a senha:");
+// --- MODAL SENHA ---
+const modal = document.getElementById('modal-admin');
+const inputSenha = document.getElementById('input-senha');
 
-        if (senhaDigitada === senhaCorreta) {
-            // No Google Sites, o "_top" força o redirecionamento na página inteira, 
-            // saindo de dentro do bloco incorporado (iframe).
-            window.open("admin.html", "_top"); 
-        } else if (senhaDigitada !== null) {
-            alert("Senha incorreta! Acesso negado.");
-        }
-    }
+document.querySelector('.nav-btn-adm')?.addEventListener('click', function(e) {
+    e.preventDefault();
+    modal.style.display = 'flex';
+    inputSenha.focus();
 });
 
-// --- BOTÃO VER MAIS PROJETOS ---
+function fecharModal() {
+    modal.style.display = 'none';
+    inputSenha.value = '';
+}
+
+function verificarSenha() {
+    if (inputSenha.value === "unimedhe12") {
+        window.open("admin.html", "_top");
+    } else {
+        alert("Senha incorreta!");
+        inputSenha.value = '';
+    }
+}
+
+// --- VER MAIS ---
 document.getElementById('btn-load-more')?.addEventListener('click', function() {
-    const hiddenItems = document.querySelectorAll('.item.hidden');
-    hiddenItems.forEach(item => {
+    document.querySelectorAll('.item.hidden').forEach(item => {
         item.classList.remove('hidden');
         item.classList.add('reveal', 'active');
     });
-    this.style.display = 'none'; // Esconde o botão após carregar tudo
+    this.style.display = 'none';
 });
 
-// --- ZOOM DA GALERIA (LIGHTBOX) ---
+// --- ZOOM ---
 function openZoom(el) {
     const overlay = document.getElementById('zoom-overlay');
     const img = document.getElementById('zoom-img');
     if (overlay && img) {
         overlay.style.display = 'flex';
         img.src = el.src;
-        document.body.style.overflow = 'hidden'; // Trava o scroll da página ao dar zoom
+        document.body.style.overflow = 'hidden';
     }
 }
 
-// Fecha o zoom ao clicar em qualquer lugar da tela escura
-document.getElementById('zoom-overlay')?.addEventListener('click', function() {
-    this.style.display = 'none';
-    document.body.style.overflow = 'auto'; // Libera o scroll novamente
-});
-
-// --- SCROLL REVEAL (ANIMAÇÃO DE ENTRADA AO ROLAR) ---
+// --- REVEAL ---
 const reveal = () => {
-    const reveals = document.querySelectorAll('.reveal');
-    reveals.forEach(el => {
-        const windowHeight = window.innerHeight;
-        const revealTop = el.getBoundingClientRect().top;
-        // Ativa a animação quando o elemento está a 100px da visão do usuário
-        if (revealTop < windowHeight - 100) {
+    document.querySelectorAll('.reveal').forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight - 50) {
             el.classList.add('active');
         }
     });
 };
-
-// Escuta o evento de rolar a página e o carregamento inicial
 window.addEventListener('scroll', reveal);
 window.addEventListener('load', reveal);

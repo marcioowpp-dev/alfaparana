@@ -18,7 +18,7 @@
         <nav>
             <a href="#servicos">Serviços</a>
             <a href="#portfolio">Portfólio</a>
-            <a href="admin.html" class="nav-btn-adm">Acesso Restrito</a>
+            <a href="#" class="nav-btn-adm">Acesso Restrito</a>
             <a href="https://wa.me/5541995022336" target="_blank" class="nav-btn-wa">WhatsApp</a>
         </nav>
     </div>
@@ -47,24 +47,21 @@
                 <h2>NOSSOS SERVIÇOS</h2>
                 <div class="line-accent"></div>
             </div>
-            
             <div class="services-grid">
                 <div class="service-card reveal">
                     <div class="icon-box">🚩</div>
                     <h3>COMUNICAÇÃO VISUAL</h3>
-                    <p>Projetos de fachadas em ACM, letras caixa, luminosos e sinalização externa de alto impacto para sua empresa.</p>
+                    <p>Projetos de fachadas em ACM, letras caixa, luminosos e sinalização externa.</p>
                 </div>
-                
                 <div class="service-card reveal">
                     <div class="icon-box">💎</div>
                     <h3>IMPRESSÃO DIGITAL</h3>
-                    <p>Adesivagem de frotas, vitrines, banners de grandes formatos e rótulos com precisão de cores.</p>
+                    <p>Adesivagem de frotas, vitrines, banners de grandes formatos e rótulos.</p>
                 </div>
-                
                 <div class="service-card reveal">
                     <div class="icon-box">🎨</div>
                     <h3>DESIGN & ARTE</h3>
-                    <p>Desenvolvimento de projetos visuais estratégicos e artes gráficas que comunicam a força do seu negócio.</p>
+                    <p>Desenvolvimento de projetos visuais estratégicos e artes gráficas.</p>
                 </div>
             </div>
         </div>
@@ -76,7 +73,6 @@
                 <h2>PROJETOS RECENTES</h2>
                 <div class="line-accent"></div>
             </div>
-            
             <div class="portfolio-grid" id="portfolio-grid">
                 <div class="item reveal"><img src="https://i.ibb.co/m5w9sTK3/54.png" onclick="openZoom(this)"></div>
                 <div class="item reveal"><img src="https://i.ibb.co/39K1Pk9S/53.png" onclick="openZoom(this)"></div>
@@ -84,7 +80,6 @@
                 <div class="item reveal"><img src="https://i.ibb.co/5ydj1cv/51.png" onclick="openZoom(this)"></div>
                 <div class="item reveal"><img src="https://i.ibb.co/fzqYYNMF/50.png" onclick="openZoom(this)"></div>
                 <div class="item reveal"><img src="https://i.ibb.co/21yMKbsB/49.png" onclick="openZoom(this)"></div>
-                
                 <div class="item hidden"><img src="https://i.ibb.co/xrT7hp9/48.png" onclick="openZoom(this)"></div>
                 <div class="item hidden"><img src="https://i.ibb.co/j9D4KjwT/47.png" onclick="openZoom(this)"></div>
                 <div class="item hidden"><img src="https://i.ibb.co/mrF1nHtP/46.png" onclick="openZoom(this)"></div>
@@ -111,31 +106,32 @@
         <div class="footer-top">
             <div class="footer-brand reveal">
                 <img src="https://i.ibb.co/FLmLhR75/ALFA-PARANA-29.png" alt="Alfa Paraná" class="footer-logo">
-                <p><strong>(41) 99502-2336</strong></p>
+                <p><strong>(41) 99502-2336</strong> | Paranaguá e Curitiba</p>
                 <p>alfaparana.png@gmail.com</p>
-                <p>Paranaguá • Curitiba</p>
             </div>
-            
             <div class="footer-links">
                 <h4>SERVIÇOS</h4>
-                <ul>
-                    <li>Fachadas e Letreiros</li>
-                    <li>Banners e Lonas</li>
-                    <li>Adesivos e Rótulos</li>
-                </ul>
+                <ul><li>Fachadas</li><li>Banners</li><li>Adesivos</li></ul>
             </div>
-            
             <div class="footer-hours">
                 <h4>HORÁRIOS</h4>
-                <p>Segunda a Sexta</p>
-                <p class="highlight-hours">08:30 – 12:00 | 13:30 – 18:00</p>
+                <p>Segunda a Sexta: 08:30 às 12:00 | 13:30 às 18:00</p>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>© 2026 Alfa Paraná. Todos os direitos reservados.</p>
-        </div>
+        <div class="footer-bottom"><p>© 2026 Alfa Paraná. Todos os direitos reservados.</p></div>
     </div>
 </footer>
+
+<div id="modal-admin" class="modal-overlay">
+    <div class="modal-content">
+        <h3>Acesso Restrito</h3>
+        <input type="password" id="input-senha" placeholder="Digite a senha">
+        <div class="modal-buttons">
+            <button onclick="verificarSenha()" class="btn-confirmar">Entrar</button>
+            <button onclick="fecharModal()" class="btn-cancelar">Sair</button>
+        </div>
+    </div>
+</div>
 
 <div id="zoom-overlay" onclick="this.style.display='none'"><img id="zoom-img"></div>
 <script src="script.js"></script>

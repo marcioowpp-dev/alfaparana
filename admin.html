@@ -1,40 +1,196 @@
-// Botão Ver Mais
-document.getElementById('btn-load-more')?.addEventListener('click', function() {
-    const hiddenItems = document.querySelectorAll('.item.hidden');
-    hiddenItems.forEach(item => {
-        item.classList.remove('hidden');
-        item.classList.add('reveal', 'active');
-    });
-    this.style.display = 'none';
-});
-
-// Zoom da Galeria
-function openZoom(el) {
-    const overlay = document.getElementById('zoom-overlay');
-    const img = document.getElementById('zoom-img');
-    if (overlay && img) {
-        overlay.style.display = 'flex';
-        img.src = el.src;
-        document.body.style.overflow = 'hidden';
-    }
-}
-
-document.getElementById('zoom-overlay')?.addEventListener('click', function() {
-    this.style.display = 'none';
-    document.body.style.overflow = 'auto';
-});
-
-// Scroll Reveal
-const reveal = () => {
-    const reveals = document.querySelectorAll('.reveal');
-    reveals.forEach(el => {
-        const windowHeight = window.innerHeight;
-        const revealTop = el.getBoundingClientRect().top;
-        if (revealTop < windowHeight - 100) {
-            el.classList.add('active');
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Alfa Paraná 2026 | Restrito</title>
+    <style>
+        :root {
+            --primary-color: #facc15;
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-main: #ffffff;
+            --input-bg: #2d2d2d;
         }
-    });
-};
 
-window.addEventListener('scroll', reveal);
-window.addEventListener('load', reveal);
+        /* Estilo da Tela de Bloqueio */
+        #lock-screen {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--bg-color); display: flex; flex-direction: column;
+            justify-content: center; align-items: center; z-index: 9999;
+        }
+        .lock-box { background: var(--card-bg); padding: 30px; border-radius: 16px; border: 1px solid var(--primary-color); text-align: center; }
+        .lock-box input { padding: 12px; border-radius: 8px; border: none; margin-bottom: 10px; width: 200px; text-align: center; }
+        .lock-box button { background: var(--primary-color); border: none; padding: 12px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; }
+
+        /* Seu estilo original da calculadora */
+        body { font-family: 'Segoe UI', system-ui, sans-serif; background-color: var(--bg-color); color: var(--text-main); display: flex; flex-direction: column; align-items: center; padding: 20px; margin: 0; }
+        .container { background: var(--card-bg); padding: 1.5rem; border-radius: 16px; width: 100%; max-width: 500px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); border: 1px solid #333; box-sizing: border-box; display: none; } /* Escondido inicialmente */
+        
+        h2 { text-align: center; color: var(--primary-color); margin-top: 0; text-transform: uppercase; font-size: 1.5rem; letter-spacing: 1px; margin-bottom: 1.5rem; }
+        .form-group { margin-bottom: 1rem; }
+        label { display: block; margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 600; color: #bbb; }
+        select, input { width: 100%; padding: 12px; border: 2px solid #444; border-radius: 8px; box-sizing: border-box; background: var(--input-bg); color: white; font-size: 16px; outline: none; }
+        .unit-selector { display: flex; gap: 8px; background: #2d2d2d; padding: 5px; border-radius: 10px; margin-bottom: 15px; border: 1px solid #444; }
+        .unit-selector label { flex: 1; text-align: center; cursor: pointer; }
+        .unit-selector input { display: none; }
+        .unit-selector span { display: block; padding: 10px; border-radius: 8px; font-weight: bold; color: #888; }
+        .unit-selector input:checked + span { background: var(--primary-color); color: #000; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+        .checkbox-card { background: #262626; padding: 14px; border-radius: 10px; margin-bottom: 10px; display: flex; align-items: center; gap: 12px; cursor: pointer; border: 1px solid #333; }
+        .btn-add { width: 100%; background: var(--primary-color); color: #000; padding: 18px; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; text-transform: uppercase; }
+        .resumo-container { width: 100%; max-width: 500px; background: var(--card-bg); border-radius: 16px; padding: 1.5rem; margin-top: 20px; border: 1px solid #333; display: none; }
+        .total-geral { margin-top: 20px; padding: 20px; background: #000; border-radius: 12px; text-align: center; border: 2px dashed var(--primary-color); }
+        .total-geral h3 { color: var(--primary-color); font-size: 2.2rem; margin: 0; }
+        .mao-obra-box { display: none; margin-top: 5px; margin-bottom: 15px; }
+    </style>
+</head>
+<body>
+
+<div id="lock-screen">
+    <div class="lock-box">
+        <h2>ALFA PARANÁ</h2>
+        <p>Acesso Restrito</p>
+        <input type="password" id="pass" placeholder="Senha">
+        <br>
+        <button onclick="checkPass()">Entrar</button>
+    </div>
+</div>
+
+<div class="container" id="calc-container">
+    <h2>Alfa Paraná</h2>
+    
+    <div class="form-group">
+        <label>Produto</label>
+        <select id="produto">
+            <optgroup label="Lonas">
+                <option value="Lona Frontlight 440g S/ Acab.">Lona Front 440g Sem Acab. (R$ 64)</option>
+                <option value="Lona Frontlight 440g C/ Acab.">Lona Front 440g Com Acab. (R$ 74)</option>
+                <option value="Lona Backlight 440g S/ Acab.">Lona Back 440g Sem Acab. (R$ 88)</option>
+                <option value="Lona Backlight 440g C/ Acab.">Lona Back 440g Com Acab. (R$ 98)</option>
+            </optgroup>
+            <optgroup label="Adesivos">
+                <option value="Adesivo Promo">Adesivo Promo (R$ 64)</option>
+                <option value="Adesivo Perfurado">Adesivo Perfurado (R$ 84)</option>
+                <option value="Adesivo Blackout">Adesivo Blackout (R$ 82)</option>
+                <option value="Adesivo Premium (Oracal/3M)">Adesivo Premium (R$ 140)</option>
+                <option value="Adesivo Promo + Corte">Adesivo Promo + Corte (R$ 94)</option>
+                <option value="Adesivo Promo + Laminação">Adesivo Promo + Laminação (R$ 110)</option>
+                <option value="Adesivo Promo + Lam. + Corte">Adesivo Promo + Lam. + Corte (R$ 126)</option>
+                <option value="Adesivo Blackout + Laminação">Adesivo Blackout + Laminação (R$ 106)</option>
+                <option value="Adesivo Premium + Laminação">Adesivo Premium + Laminação (R$ 240)</option>
+            </optgroup>
+        </select>
+    </div>
+
+    <div class="unit-selector">
+        <label><input type="radio" name="unit" value="cm" checked> <span>cm</span></label>
+        <label><input type="radio" name="unit" value="m"> <span>m</span></label>
+    </div>
+
+    <div class="grid-3">
+        <div class="form-group"><label>Largura</label><input type="number" id="largura" step="0.01"></div>
+        <div class="form-group"><label>Altura</label><input type="number" id="altura" step="0.01"></div>
+        <div class="form-group"><label>Qtd</label><input type="number" id="quantidade" value="1"></div>
+    </div>
+
+    <label class="checkbox-card">
+        <input type="checkbox" id="checkFachada"> 🏗️ Estrutura de Metalon
+    </label>
+
+    <label class="checkbox-card">
+        <input type="checkbox" id="checkMaoObra" onchange="toggleMaoObra()"> 👷 Incluir Mão de Obra
+    </label>
+    
+    <div id="campoMaoObra" class="mao-obra-box">
+        <input type="number" id="valorMaoObra" placeholder="Valor manual (R$)">
+    </div>
+
+    <button class="btn-add" onclick="adicionarItem()">Adicionar ao Pedido</button>
+</div>
+
+<div class="resumo-container" id="resumo-box">
+    <div id="lista-itens"></div>
+    <div class="total-geral">
+        <span>VALOR TOTAL</span>
+        <h3 id="valor-total-geral">R$ 0,00</h3>
+    </div>
+    <button style="background:none; color:red; border:none; width:100%; margin-top:10px; cursor:pointer;" onclick="limparPedido()">Limpar Tudo</button>
+</div>
+
+<script>
+    // LÓGICA DE SENHA
+    function checkPass() {
+        const p = document.getElementById('pass').value;
+        if(p === "unimedhe12") {
+            document.getElementById('lock-screen').style.display = 'none';
+            document.getElementById('calc-container').style.display = 'block';
+        } else {
+            alert("Senha Incorreta");
+        }
+    }
+
+    // LÓGICA DA CALCULADORA
+    const TAXA_COLETA = 80.00;
+    const PRECO_BARRA_METALON = 115.00;
+    const TABELA_PRECOS = {
+        "Lona Frontlight 440g S/ Acab.": 64, "Lona Frontlight 440g C/ Acab.": 74,
+        "Lona Backlight 440g S/ Acab.": 88, "Lona Backlight 440g C/ Acab.": 98,
+        "Adesivo Promo": 64, "Adesivo Perfurado": 84, "Adesivo Blackout": 82,
+        "Adesivo Premium (Oracal/3M)": 140, "Adesivo Promo + Corte": 94,
+        "Adesivo Promo + Laminação": 110, "Adesivo Promo + Lam. + Corte": 126,
+        "Adesivo Blackout + Laminação": 106, "Adesivo Premium + Laminação": 240
+    };
+
+    let itensPedido = [];
+
+    function toggleMaoObra() {
+        document.getElementById('campoMaoObra').style.display = document.getElementById('checkMaoObra').checked ? 'block' : 'none';
+    }
+
+    function adicionarItem() {
+        const prod = document.getElementById('produto').value;
+        const unit = document.querySelector('input[name="unit"]:checked').value;
+        let largI = parseFloat(document.getElementById('largura').value) || 0;
+        let altI = parseFloat(document.getElementById('altura').value) || 0;
+        const qtd = parseInt(document.getElementById('quantidade').value) || 1;
+        const eFachada = document.getElementById('checkFachada').checked;
+        const vMaoObra = parseFloat(document.getElementById('valorMaoObra').value) || 0;
+
+        if (largI <= 0 || altI <= 0) return alert("Preencha as medidas.");
+
+        let largM = (unit === "cm") ? largI / 100 : largI;
+        let altM = (unit === "cm") ? altI / 100 : altI;
+        let valorBase = (largM * altM) * TABELA_PRECOS[prod] * qtd;
+        let barras = eFachada ? Math.ceil(((largM + altM) * 2) * qtd / 6) : 0;
+
+        itensPedido.push({ prod, larg: largI, alt: altI, unit, valorBase: valorBase + (barras * PRECO_BARRA_METALON) + vMaoObra, qtd });
+        atualizarInterface();
+    }
+
+    function atualizarInterface() {
+        const listaDiv = document.getElementById('lista-itens');
+        let totalAcumulado = 0;
+        listaDiv.innerHTML = "";
+
+        itensPedido.forEach((item, i) => {
+            let valorItem = item.valorBase + TAXA_COLETA;
+            totalAcumulado += valorItem;
+            listaDiv.innerHTML += `
+                <div style="border-bottom:1px solid #333; padding:10px 0; display:flex; justify-content:space-between;">
+                    <div>
+                        <b>${item.qtd}x ${item.prod}</b><br>
+                        <small>R$ ${valorItem.toLocaleString('pt-br',{minimumFractionDigits:2})}</small>
+                    </div>
+                    <button onclick="removerItem(${i})" style="color:red; background:none; border:none; cursor:pointer;">✕</button>
+                </div>`;
+        });
+        document.getElementById('resumo-box').style.display = itensPedido.length > 0 ? "block" : "none";
+        document.getElementById('valor-total-geral').innerText = `R$ ${totalAcumulado.toLocaleString('pt-br',{minimumFractionDigits:2})}`;
+    }
+
+    function removerItem(i) { itensPedido.splice(i, 1); atualizarInterface(); }
+    function limparPedido() { itensPedido = []; atualizarInterface(); }
+</script>
+</body>
+</html>
