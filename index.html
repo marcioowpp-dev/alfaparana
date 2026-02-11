@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alfa Paraná | Inteligência Visual</title>
+    <title>Alfa Paraná | Impressão Criativa</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -13,7 +14,7 @@
 
 <header class="navbar">
     <div class="container nav-content">
-        <img src="https://i.ibb.co/FLmLhR75/ALFA-PARANA-29.png" alt="Alfa Paraná" class="nav-logo">
+        <a href="#"><img src="https://i.ibb.co/FLmLhR75/ALFA-PARANA-29.png" alt="Alfa Paraná" class="nav-logo"></a>
         <nav>
             <a href="#servicos">Serviços</a>
             <a href="#portfolio">Portfólio</a>
@@ -23,73 +24,120 @@
     </div>
 </header>
 
-<div class="social-bar">
-    <div class="container social-content">
-        <a href="https://instagram.com/alfaparana" target="_blank"><i class="fab fa-instagram"></i> /alfaparana</a>
-        <a href="https://facebook.com/alfaparana" target="_blank"><i class="fab fa-facebook-f"></i> /alfaparana</a>
-    </div>
-</div>
-
-<section class="hero-tech">
-    <div class="container hero-grid">
-        <div class="hero-text reveal">
-            <span class="badge-tech">TECNOLOGIA EM COMUNICAÇÃO VISUAL</span>
-            <h1>IMPRESSÃO <br><span>ESTRATÉGICA</span></h1>
-            <p>Transformamos fachadas e ambientes com precisão técnica e design de alto impacto. O maior centro de soluções do litoral.</p>
-            <a href="https://wa.me/5541995022336" target="_blank" class="btn-main-tech">SOLICITAR ORÇAMENTO</a>
+<main>
+    <section class="hero-light">
+        <div class="container hero-grid">
+            <div class="hero-text reveal">
+                <span class="badge-tech">COMUNICAÇÃO VISUAL</span>
+                <h1>IMPRESSÃO <br><span class="highlight">CRIATIVA</span></h1>
+                <p>Soluções Gráficas para destacar sua marca com excelência em <strong>Paranaguá, Curitiba e Região.</strong></p>
+                <div class="hero-btns">
+                    <a href="https://wa.me/5541995022336" target="_blank" class="btn-main">Orçamento via WhatsApp</a>
+                </div>
+            </div>
+            <div class="hero-img reveal">
+                <img src="https://i.ibb.co/m5w9sTK3/54.png" alt="Destaque Alfa Paraná">
+            </div>
         </div>
-        <div class="hero-img reveal">
-            <img src="https://i.ibb.co/Ng8m9y4w/54.png" alt="Destaque Alfa Paraná">
+    </section>
+
+    <section id="servicos" class="section-padding">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>NOSSOS SERVIÇOS</h2>
+                <div class="line-accent"></div>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <div class="icon-box">🚩</div>
+                    <h3>COMUNICAÇÃO VISUAL</h3>
+                    <p>Projetos de fachadas em ACM, letras caixa, luminosos e sinalização externa de alto impacto para sua empresa.</p>
+                </div>
+                
+                <div class="service-card reveal">
+                    <div class="icon-box">💎</div>
+                    <h3>IMPRESSÃO DIGITAL</h3>
+                    <p>Adesivagem de frotas, vitrines, banners de grandes formatos e rótulos com precisão de cores.</p>
+                </div>
+                
+                <div class="service-card reveal">
+                    <div class="icon-box">🎨</div>
+                    <h3>DESIGN & ARTE</h3>
+                    <p>Desenvolvimento de projetos visuais estratégicos e artes gráficas que comunicam a força do seu negócio.</p>
+                </div>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section id="portfolio" class="container reveal">
-    <div class="section-header">
-        <h2>PORTFÓLIO</h2>
-        <p>Projetos recentes executados com excelência</p>
-    </div>
-    
-    <div class="portfolio-grid" id="portfolio-grid">
-        <div class="item"><img src="https://i.ibb.co/Ng8m9y4w/54.png" onclick="openZoom(this)"></div>
-        <div class="item"><img src="https://i.ibb.co/0j44yQJB/53.png" onclick="openZoom(this)"></div>
-        <div class="item"><img src="https://i.ibb.co/VcRjBGPN/52.png" onclick="openZoom(this)"></div>
-        <div class="item"><img src="https://i.ibb.co/x81P2kcd/51.png" onclick="openZoom(this)"></div>
-        <div class="item"><img src="https://i.ibb.co/6cNJV5kC/50.png" onclick="openZoom(this)"></div>
-        <div class="item"><img src="https://i.ibb.co/KzbhXSZw/49.png" onclick="openZoom(this)"></div>
-        
-        <div class="item hidden"><img src="https://i.ibb.co/vCXpyLmp/48.png" onclick="openZoom(this)"></div>
-        <div class="item hidden"><img src="https://i.ibb.co/WWs9F2GN/47.png" onclick="openZoom(this)"></div>
-    </div>
-    <button id="btn-load-more" class="btn-outline">VER MAIS PROJETOS</button>
-</section>
+    <section id="portfolio" class="section-padding">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>PROJETOS RECENTES</h2>
+                <div class="line-accent"></div>
+            </div>
+            
+            <div class="portfolio-grid" id="portfolio-grid">
+                <div class="item reveal"><img src="https://i.ibb.co/m5w9sTK3/54.png" onclick="openZoom(this)"></div>
+                <div class="item reveal"><img src="https://i.ibb.co/39K1Pk9S/53.png" onclick="openZoom(this)"></div>
+                <div class="item reveal"><img src="https://i.ibb.co/cKBF25Gm/52.png" onclick="openZoom(this)"></div>
+                <div class="item reveal"><img src="https://i.ibb.co/5ydj1cv/51.png" onclick="openZoom(this)"></div>
+                <div class="item reveal"><img src="https://i.ibb.co/fzqYYNMF/50.png" onclick="openZoom(this)"></div>
+                <div class="item reveal"><img src="https://i.ibb.co/21yMKbsB/49.png" onclick="openZoom(this)"></div>
+                
+                <div class="item hidden"><img src="https://i.ibb.co/xrT7hp9/48.png" onclick="openZoom(this)"></div>
+                <div class="item hidden"><img src="https://i.ibb.co/j9D4KjwT/47.png" onclick="openZoom(this)"></div>
+                <div class="item hidden"><img src="https://i.ibb.co/mrF1nHtP/46.png" onclick="openZoom(this)"></div>
+                <div class="item hidden"><img src="https://i.ibb.co/SYf0Tpf/45.png" onclick="openZoom(this)"></div>
+                <div class="item hidden"><img src="https://i.ibb.co/HDQxJ2RK/44.png" onclick="openZoom(this)"></div>
+                <div class="item hidden"><img src="https://i.ibb.co/nqPhkmch/43.png" onclick="openZoom(this)"></div>
+                <div class="item hidden"><img src="https://i.ibb.co/1GmGygXg/63.png" onclick="openZoom(this)"></div>
+                <div class="item hidden"><img src="https://i.ibb.co/LdFB75rS/62.png" onclick="openZoom(this)"></div>
+                <div class="item hidden"><img src="https://i.ibb.co/rftScGpx/61.png" onclick="openZoom(this)"></div>
+                <div class="item hidden"><img src="https://i.ibb.co/m5hNgnqk/60.png" onclick="openZoom(this)"></div>
+                <div class="item hidden"><img src="https://i.ibb.co/8Lf5FT69/59.png" onclick="openZoom(this)"></div>
+                <div class="item hidden"><img src="https://i.ibb.co/fGBbg1nq/58.png" onclick="openZoom(this)"></div>
+                <div class="item hidden"><img src="https://i.ibb.co/Zp6FDgrN/57.png" onclick="openZoom(this)"></div>
+                <div class="item hidden"><img src="https://i.ibb.co/3yzH1VM3/56.png" onclick="openZoom(this)"></div>
+                <div class="item hidden"><img src="https://i.ibb.co/Y7W8jRbf/55.png" onclick="openZoom(this)"></div>
+            </div>
+            <button id="btn-load-more" class="btn-outline">VER MAIS PROJETOS</button>
+        </div>
+    </section>
+</main>
 
-<footer class="footer-modern">
+<footer class="footer-clean">
     <div class="container">
-        <div class="footer-header">
-            <img src="https://i.ibb.co/FLmLhR75/ALFA-PARANA-29.png" alt="Alfa Paraná" class="mini-logo">
-            <p><strong>(41) 99502-2336</strong> | Paranaguá e Curitiba</p>
+        <div class="footer-top">
+            <div class="footer-brand reveal">
+                <img src="https://i.ibb.co/FLmLhR75/ALFA-PARANA-29.png" alt="Alfa Paraná" class="footer-logo">
+                <p><strong>(41) 99502-2336</strong></p>
+                <p>alfaparana.png@gmail.com</p>
+                <p>Paranaguá • Curitiba</p>
+            </div>
+            
+            <div class="footer-links">
+                <h4>SERVIÇOS</h4>
+                <ul>
+                    <li>Fachadas e Letreiros</li>
+                    <li>Banners e Lonas</li>
+                    <li>Adesivos e Rótulos</li>
+                </ul>
+            </div>
+            
+            <div class="footer-hours">
+                <h4>HORÁRIOS</h4>
+                <p>Segunda a Sexta</p>
+                <p class="highlight-hours">08:30 – 12:00 | 13:30 – 18:00</p>
+            </div>
         </div>
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h4>📋 SERVIÇOS</h4>
-                <ul><li>• Fachadas</li><li>• Banners</li><li>• Adesivos</li><li>• Sinalização</li></ul>
-            </div>
-            <div class="footer-col">
-                <h4>🕒 HORÁRIOS</h4>
-                <ul><li>Segunda a Sexta:</li><li>08:30 às 12:00 | 13:30 às 18:00</li></ul>
-            </div>
-            <div class="footer-col">
-                <h4>📧 E-MAIL</h4>
-                <p style="font-size: 0.85rem; color: #666;">alfaparana.png@gmail.com</p>
-            </div>
+        <div class="footer-bottom">
+            <p>© 2026 Alfa Paraná. Todos os direitos reservados.</p>
         </div>
-        <div class="bottom-bar">© 2026 Alfa Paraná - Todos os direitos reservados.</div>
     </div>
 </footer>
 
 <div id="zoom-overlay" onclick="this.style.display='none'"><img id="zoom-img"></div>
-
 <script src="script.js"></script>
 </body>
 </html>

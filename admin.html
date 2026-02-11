@@ -1,42 +1,40 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>ADM | Login Alfa Paraná</title>
-    <style>
-        body { background: #001a4d; font-family: sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; color: white; }
-        .login-box { background: rgba(255,255,255,0.1); padding: 40px; border-radius: 20px; backdrop-filter: blur(10px); text-align: center; border: 1px solid rgba(255,255,255,0.2); }
-        input { width: 100%; padding: 15px; margin: 20px 0; border-radius: 10px; border: none; font-size: 18px; text-align: center; }
-        .btn-login { background: #00d2ff; color: #001a4d; padding: 15px 40px; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; }
-        #calc-content { display: none; } /* Escondido até acertar a senha */
-    </style>
-</head>
-<body>
+// Botão Ver Mais
+document.getElementById('btn-load-more')?.addEventListener('click', function() {
+    const hiddenItems = document.querySelectorAll('.item.hidden');
+    hiddenItems.forEach(item => {
+        item.classList.remove('hidden');
+        item.classList.add('reveal', 'active');
+    });
+    this.style.display = 'none';
+});
 
-    <div id="login-screen" class="login-box">
-        <img src="https://i.ibb.co/FLmLhR75/ALFA-PARANA-29.png" style="height: 60px; filter: brightness(0) invert(1);">
-        <h2>ACESSO RESTRITO</h2>
-        <input type="password" id="senha" placeholder="Digite a senha">
-        <button class="btn-login" onclick="verificar()">ENTRAR</button>
-    </div>
+// Zoom da Galeria
+function openZoom(el) {
+    const overlay = document.getElementById('zoom-overlay');
+    const img = document.getElementById('zoom-img');
+    if (overlay && img) {
+        overlay.style.display = 'flex';
+        img.src = el.src;
+        document.body.style.overflow = 'hidden';
+    }
+}
 
-    <div id="calc-content">
-        <h1 style="text-align: center;">Calculadora Liberada</h1>
-        <p style="text-align: center;">(Insira o código da calculadora profissional aqui)</p>
-        <button onclick="location.reload()" style="color: red; cursor:pointer">SAIR</button>
-    </div>
+document.getElementById('zoom-overlay')?.addEventListener('click', function() {
+    this.style.display = 'none';
+    document.body.style.overflow = 'auto';
+});
 
-    <script>
-        function verificar() {
-            const senha = document.getElementById('senha').value;
-            if(senha === "1234") { // <--- Altere sua senha aqui
-                document.getElementById('login-screen').style.display = 'none';
-                document.getElementById('calc-content').style.display = 'block';
-                document.body.style.background = "#0b1322";
-            } else {
-                alert("Senha Incorreta!");
-            }
+// Scroll Reveal
+const reveal = () => {
+    const reveals = document.querySelectorAll('.reveal');
+    reveals.forEach(el => {
+        const windowHeight = window.innerHeight;
+        const revealTop = el.getBoundingClientRect().top;
+        if (revealTop < windowHeight - 100) {
+            el.classList.add('active');
         }
-    </script>
-</body>
-</html>
+    });
+};
+
+window.addEventListener('scroll', reveal);
+window.addEventListener('load', reveal);
