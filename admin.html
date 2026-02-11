@@ -14,9 +14,7 @@
             --border: #e0e0e0;
             --card: #ffffff;
         }
-
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-
         body {
             background: var(--bg-light);
             color: var(--primary);
@@ -28,18 +26,14 @@
             align-items: center;
             min-height: 100vh;
         }
-
         .header-adm {
             text-align: center;
             margin: 20px 0 30px;
             width: 100%;
             max-width: 500px;
         }
-
         .header-adm img { height: 45px; margin-bottom: 10px; }
         .header-adm h2 { font-weight: 900; font-size: 1.2rem; text-transform: uppercase; margin: 0; letter-spacing: -0.5px; }
-
-        /* Container Principal com Ajuste Mobile */
         .container {
             background: var(--card);
             padding: 25px;
@@ -49,234 +43,137 @@
             border: 1px solid var(--border);
             box-shadow: 0 4px 20px rgba(0,0,0,0.03);
         }
-
         .form-group { margin-bottom: 1.2rem; }
         label { display: block; margin-bottom: 8px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: var(--text-muted); }
-
-        select, input {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            background: #fafafa;
-            font-size: 16px; /* Evita zoom automático no iPhone */
-            font-family: 'Inter', sans-serif;
-            outline: none;
-        }
-
-        /* Grid que se ajusta no Mobile */
-        .grid-inputs {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .unit-selector {
-            display: flex;
-            background: #eee;
-            padding: 4px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-        }
-        .unit-selector label { flex: 1; margin: 0; }
+        select, input { width: 100%; padding: 12px 15px; border: 1px solid var(--border); border-radius: 12px; background: #fafafa; font-size: 16px; font-family: 'Inter', sans-serif; outline: none; transition: 0.2s; }
+        select:focus, input:focus { border-color: var(--accent); background: #fff; }
+        .grid-inputs { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 15px; }
+        .unit-selector { display: flex; background: #eee; padding: 4px; border-radius: 12px; margin-bottom: 20px; }
+        .unit-selector label { flex: 1; margin: 0; cursor: pointer; }
         .unit-selector input { display: none; }
-        .unit-selector span {
-            display: block;
-            padding: 8px;
-            text-align: center;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 0.8rem;
-            color: #888;
-        }
-        .unit-selector input:checked + span { background: var(--accent); color: var(--primary); }
-
-        .checkbox-card {
-            background: #fff;
-            padding: 15px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            border: 1px solid var(--border);
-            margin-bottom: 10px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-
-        .btn-add {
-            width: 100%;
-            background: var(--primary);
-            color: #fff;
-            padding: 16px;
-            border: none;
-            border-radius: 12px;
-            font-weight: 800;
-            text-transform: uppercase;
-            margin-top: 10px;
-            cursor: pointer;
-        }
-
-        /* Resumo do Pedido Estilo Card */
-        .resumo-container {
-            width: 100%;
-            max-width: 500px;
-            margin-top: 20px;
-            display: none;
-        }
-
-        .item-adicionado {
-            background: #fff;
-            padding: 15px;
-            border-radius: 15px;
-            border: 1px solid var(--border);
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .total-card {
-            background: var(--accent);
-            padding: 25px;
-            border-radius: 20px;
-            text-align: center;
-            margin-top: 15px;
-        }
-        .total-card small { font-weight: 700; text-transform: uppercase; font-size: 0.7rem; }
-        .total-card h3 { font-size: 2.2rem; margin: 5px 0 0; font-weight: 900; }
-
-        .btn-limpar {
-            width: 100%;
-            background: none;
-            border: none;
-            color: #ff4444;
-            padding: 15px;
-            font-weight: 700;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            cursor: pointer;
-        }
-
+        .unit-selector span { display: block; padding: 8px; text-align: center; border-radius: 10px; font-weight: 700; font-size: 0.8rem; color: #888; transition: 0.3s; }
+        .unit-selector input:checked + span { background: var(--accent); color: var(--primary); box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .checkbox-card { background: #fff; padding: 15px; border-radius: 12px; display: flex; align-items: center; gap: 12px; border: 1px solid var(--border); margin-bottom: 10px; cursor: pointer; font-size: 0.9rem; font-weight: 600; transition: 0.2s; }
+        .checkbox-card:active { transform: scale(0.98); }
+        .btn-add { width: 100%; background: var(--primary); color: #fff; padding: 16px; border: none; border-radius: 12px; font-weight: 800; text-transform: uppercase; margin-top: 10px; cursor: pointer; transition: 0.2s; }
+        .btn-add:active { transform: scale(0.96); opacity: 0.9; }
+        .resumo-container { width: 100%; max-width: 500px; margin-top: 20px; display: none; animation: slideUp 0.3s ease-out; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .item-adicionado { background: #fff; padding: 15px; border-radius: 15px; border: 1px solid var(--border); margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
+        .total-card { background: var(--accent); padding: 25px; border-radius: 20px; text-align: center; margin-top: 15px; box-shadow: 0 10px 25px rgba(255, 210, 0, 0.3); }
+        .total-card small { font-weight: 700; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 1px; color: rgba(0,0,0,0.5); }
+        .total-card h3 { font-size: 2.2rem; margin: 5px 0 0; font-weight: 900; color: var(--primary); }
+        .btn-limpar { width: 100%; background: none; border: none; color: #ff4444; padding: 15px; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; cursor: pointer; margin-top: 10px; }
         .btn-voltar { margin: 20px 0; color: var(--text-muted); text-decoration: none; font-size: 0.8rem; font-weight: 600; }
-
-        /* AJUSTES MOBILE ESPECÍFICOS */
-        @media (max-width: 400px) {
-            .grid-inputs { grid-template-columns: 1fr; } /* Empilha largura/altura/qtd no telemóvel pequeno */
-            .container { padding: 15px; }
-            .header-adm h2 { font-size: 1rem; }
-        }
     </style>
 </head>
 <body>
-
-<div class="header-adm">
-    <img src="https://i.ibb.co/FLmLhR75/ALFA-PARANA-29.png" alt="Alfa Paraná">
-    <h2>Calculadora Interna</h2>
-</div>
-
-<div class="container">
-    <div class="form-group">
-        <label>Produto</label>
-        <select id="produto">
-            <optgroup label="Lonas">
-                <option value="Lona Frontlight 440g S/ Acab.">Lona Front 440g Sem Acab. (R$ 64)</option>
-                <option value="Lona Frontlight 440g C/ Acab.">Lona Front 440g Com Acab. (R$ 74)</option>
-            </optgroup>
-            <optgroup label="Adesivos">
-                <option value="Adesivo Promo">Adesivo Promo (R$ 64)</option>
-                <option value="Adesivo Perfurado">Adesivo Perfurado (R$ 84)</option>
-                <option value="Adesivo Promo + Laminação">Adesivo Promo + Laminação (R$ 110)</option>
-            </optgroup>
-        </select>
+    <div class="header-adm">
+        <img src="https://i.ibb.co/FLmLhR75/ALFA-PARANA-29.png" alt="Alfa Paraná">
+        <h2>Calculadora Interna</h2>
     </div>
 
-    <div class="unit-selector">
-        <label><input type="radio" name="unit" value="cm" checked> <span>CM</span></label>
-        <label><input type="radio" name="unit" value="m"> <span>METROS</span></label>
-    </div>
+    <div class="container">
+        <div class="form-group">
+            <label>Produto</label>
+            <select id="produto">
+                <optgroup label="Lonas">
+                    <option value="Lona Frontlight 440g S/ Acab.">Lona Front 440g Sem Acab. (R$ 64)</option>
+                    <option value="Lona Frontlight 440g C/ Acab.">Lona Front 440g Com Acab. (R$ 74)</option>
+                </optgroup>
+                <optgroup label="Adesivos">
+                    <option value="Adesivo Promo">Adesivo Promo (R$ 64)</option>
+                    <option value="Adesivo Perfurado">Adesivo Perfurado (R$ 84)</option>
+                    <option value="Adesivo Promo + Laminação">Adesivo Promo + Laminação (R$ 110)</option>
+                </optgroup>
+            </select>
+        </div>
 
-    <div class="grid-inputs">
-        <div class="form-group"><label>Largura</label><input type="number" id="largura" placeholder="0"></div>
-        <div class="form-group"><label>Altura</label><input type="number" id="altura" placeholder="0"></div>
-        <div class="form-group"><label>Qtd</label><input type="number" id="quantidade" value="1"></div>
-    </div>
+        <div class="unit-selector">
+            <label><input type="radio" name="unit" value="cm" checked> <span>CM</span></label>
+            <label><input type="radio" name="unit" value="m"> <span>METROS</span></label>
+        </div>
 
-    <label class="checkbox-card">
-        <input type="checkbox" id="checkFachada"> 🏗️ Estrutura Metalon
-    </label>
+        <div class="grid-inputs">
+            <div class="form-group"><label>Largura</label><input type="number" id="largura" placeholder="0"></div>
+            <div class="form-group"><label>Altura</label><input type="number" id="altura" placeholder="0"></div>
+            <div class="form-group"><label>Qtd</label><input type="number" id="quantidade" value="1"></div>
+        </div>
 
-    <label class="checkbox-card">
-        <input type="checkbox" id="checkMaoObra" onchange="document.getElementById('vMao').style.display=this.checked?'block':'none'"> 👷 Mão de Obra
-    </label>
-    
-    <input type="number" id="vMao" style="display:none; margin-bottom:15px;" placeholder="Valor R$">
+        <label class="checkbox-card">
+            <input type="checkbox" id="checkFachada"> 🏗️ Estrutura Metalon
+        </label>
 
-    <button class="btn-add" onclick="adicionarItem()">Adicionar</button>
-</div>
-
-<div class="resumo-container" id="resumo-box">
-    <div id="lista-itens"></div>
-    <div class="total-card">
-        <small>Total do Pedido</small>
-        <h3 id="valor-total-geral">R$ 0,00</h3>
-    </div>
-    <button class="btn-limpar" onclick="limparPedido()">Limpar Tudo</button>
-</div>
-
-<a href="index.html" class="btn-voltar">← Voltar ao Site</a>
-
-<script>
-    const TAXA_COLETA = 80.00;
-    const PRECO_BARRA_METALON = 115.00;
-    const TABELA = {
-        "Lona Frontlight 440g S/ Acab.": 64, "Lona Frontlight 440g C/ Acab.": 74,
-        "Adesivo Promo": 64, "Adesivo Perfurado": 84, "Adesivo Promo + Laminação": 110
-    };
-
-    let pedido = [];
-
-    function adicionarItem() {
-        const prod = document.getElementById('produto').value;
-        const unit = document.querySelector('input[name="unit"]:checked').value;
-        let l = parseFloat(document.getElementById('largura').value) || 0;
-        let a = parseFloat(document.getElementById('altura').value) || 0;
-        let q = parseInt(document.getElementById('quantidade').value) || 1;
+        <label class="checkbox-card">
+            <input type="checkbox" id="checkMaoObra" onchange="document.getElementById('vMao').style.display=this.checked?'block':'none'"> 👷 Mão de Obra
+        </label>
         
-        if(l <= 0 || a <= 0) return alert("Insira as medidas");
+        <input type="number" id="vMao" style="display:none; margin-bottom:15px;" placeholder="Valor da Mão de Obra R$">
 
-        let lm = (unit === "cm") ? l / 100 : l;
-        let am = (unit === "cm") ? a / 100 : a;
-        
-        let vMat = (lm * am) * (TABELA[prod] || 64) * q;
-        let barras = document.getElementById('checkFachada').checked ? Math.ceil(((lm+am)*2)*q/6) : 0;
-        let vMao = document.getElementById('checkMaoObra').checked ? parseFloat(document.getElementById('vMao').value)||0 : 0;
+        <button class="btn-add" onclick="adicionarItem()">Adicionar ao Orçamento</button>
+    </div>
 
-        pedido.push({ prod, desc: `${l}x${a}${unit}`, valor: vMat + (barras*PRECO_BARRA_METALON) + vMao });
-        
-        atualizar();
-        document.getElementById('largura').value=''; document.getElementById('altura').value='';
-    }
+    <div class="resumo-container" id="resumo-box">
+        <div id="lista-itens"></div>
+        <div class="total-card">
+            <small>Total do Pedido</small>
+            <h3 id="valor-total-geral">R$ 0,00</h3>
+        </div>
+        <button class="btn-limpar" onclick="limparPedido()">Limpar Pedido</button>
+    </div>
 
-    function atualizar() {
-        const lista = document.getElementById('lista-itens');
-        let total = 0;
-        lista.innerHTML = "";
-        pedido.forEach((it, i) => {
-            total += it.valor;
-            lista.innerHTML += `<div class="item-adicionado">
-                <div><b>${it.prod}</b><br><small>${it.desc} - R$ ${it.valor.toFixed(2)}</small></div>
-                <button onclick="pedido.splice(${i},1);atualizar()" style="border:none;background:none;color:#ccc;font-size:1.2rem;cursor:pointer;">✕</button>
-            </div>`;
-        });
-        document.getElementById('resumo-box').style.display = pedido.length ? "block" : "none";
-        document.getElementById('valor-total-geral').innerText = "R$ " + (total > 0 ? total + TAXA_COLETA : 0).toLocaleString('pt-br',{minimumFractionDigits:2});
-    }
+    <a href="index.html" class="btn-voltar">← Voltar ao Site</a>
 
-    function limparPedido() { pedido = []; atualizar(); }
-</script>
+    <script>
+        const TAXA_COLETA = 80.00;
+        const PRECO_BARRA_METALON = 115.00;
+        const TABELA = {
+            "Lona Frontlight 440g S/ Acab.": 64,
+            "Lona Frontlight 440g C/ Acab.": 74,
+            "Adesivo Promo": 64,
+            "Adesivo Perfurado": 84,
+            "Adesivo Promo + Laminação": 110
+        };
+
+        let pedido = [];
+
+        function adicionarItem() {
+            const prod = document.getElementById('produto').value;
+            const unit = document.querySelector('input[name="unit"]:checked').value;
+            let l = parseFloat(document.getElementById('largura').value) || 0;
+            let a = parseFloat(document.getElementById('altura').value) || 0;
+            let q = parseInt(document.getElementById('quantidade').value) || 1;
+            
+            if(l <= 0 || a <= 0) return alert("Insira as medidas");
+
+            let lm = (unit === "cm") ? l / 100 : l;
+            let am = (unit === "cm") ? a / 100 : a;
+            
+            let vMat = (lm * am) * (TABELA[prod] || 64) * q;
+            let barras = document.getElementById('checkFachada').checked ? Math.ceil(((lm+am)*2)*q/6) : 0;
+            let vMao = document.getElementById('checkMaoObra').checked ? parseFloat(document.getElementById('vMao').value)||0 : 0;
+
+            pedido.push({ prod, desc: `${l}x${a}${unit}`, valor: vMat + (barras*PRECO_BARRA_METALON) + vMao });
+            atualizar();
+            document.getElementById('largura').value=''; document.getElementById('altura').value='';
+        }
+
+        function atualizar() {
+            const lista = document.getElementById('lista-itens');
+            let total = 0;
+            lista.innerHTML = "";
+            pedido.forEach((it, i) => {
+                total += it.valor;
+                lista.innerHTML += `<div class="item-adicionado">
+                    <div><b>${it.prod}</b><br><small>${it.desc} - R$ ${it.valor.toFixed(2)}</small></div>
+                    <button onclick="pedido.splice(${i},1);atualizar()" style="border:none;background:none;color:#ccc;font-size:1.2rem;cursor:pointer;">✕</button>
+                </div>`;
+            });
+            document.getElementById('resumo-box').style.display = pedido.length ? "block" : "none";
+            document.getElementById('valor-total-geral').innerText = "R$ " + (total > 0 ? total + TAXA_COLETA : 0).toLocaleString('pt-br',{minimumFractionDigits:2});
+        }
+
+        function limparPedido() { pedido = []; atualizar(); }
+    </script>
 </body>
 </html>

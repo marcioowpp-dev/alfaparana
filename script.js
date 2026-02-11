@@ -15,8 +15,6 @@ function fecharModal() {
 
 function verificarSenha() {
     if (inputSenha.value === "unimedhe12") {
-        // Em vez de _top, usamos _self para abrir dentro do próprio quadro
-        // Ou apenas redirecionamos a localização
         window.location.href = "admin.html";
     } else {
         alert("Senha incorreta!");
