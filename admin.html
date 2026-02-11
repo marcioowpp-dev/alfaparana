@@ -3,381 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel Alfa Paraná | Orçamentos</title>
+    <title>Calculadora Alfa Paraná</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <style>
-        :root {
-            --bg-light: #fdfdfd;
-            --accent: #ffd200;
-            --primary: #1a1a1a;
-            --text-muted: #666;
-            --border: #eee;
-        }
-
-        body {
-            background: var(--bg-light);
-            color: var(--primary);
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .header-adm {
-            text-align: center;
-            margin-bottom: 30px;
-            width: 100%;
-            max-width: 550px;
-        }
-
-        .header-adm img {
-            height: 50px;
-            margin-bottom: 15px;
-        }
-
-        .header-adm h2 {
-            font-weight: 900;
-            font-size: 1.4rem;
-            letter-spacing: -1px;
-            margin: 0;
-            text-transform: uppercase;
-        }
-
-        .header-adm .line {
-            width: 50px;
-            height: 4px;
-            background: var(--accent);
-            margin: 10px auto;
-        }
-
-        /* Container Principal */
-        .container {
-            background: #ffffff;
-            padding: 2rem;
-            border-radius: 12px;
-            width: 100%;
-            max-width: 550px;
-            border: 1px solid var(--border);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
-
-        .form-group { margin-bottom: 1.2rem; }
-        
-        label {
-            display: block;
-            margin-bottom: 0.6rem;
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-transform: uppercase;
-        }
-
-        select, input[type="number"] {
-            width: 100%;
-            padding: 14px;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            background: #f9f9f9;
-            color: var(--primary);
-            font-size: 1rem;
-            font-family: 'Inter', sans-serif;
-            outline: none;
-            transition: border 0.3s;
-        }
-
-        select:focus, input:focus {
-            border-color: var(--accent);
-        }
-
-        /* Seletor de Unidade (cm/m) */
-        .unit-selector {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 1.5rem;
-        }
-
-        .unit-selector label {
-            flex: 1;
-            text-align: center;
-            cursor: pointer;
-            margin: 0;
-        }
-
-        .unit-selector input { display: none; }
-
-        .unit-selector span {
-            display: block;
-            padding: 10px;
-            border-radius: 8px;
-            background: #f0f0f0;
-            font-weight: 700;
-            color: var(--text-muted);
-            transition: 0.3s;
-        }
-
-        .unit-selector input:checked + span {
-            background: var(--accent);
-            color: var(--primary);
-        }
-
-        .grid-3 {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 15px;
-            margin-bottom: 1rem;
-        }
-
-        /* Checkboxes Personalizados */
-        .checkbox-row {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .checkbox-card {
-            background: #fff;
-            padding: 12px 15px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-            border: 1px solid var(--border);
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .btn-add {
-            width: 100%;
-            background: var(--primary);
-            color: #fff;
-            padding: 18px;
-            border: none;
-            border-radius: 8px;
-            font-weight: 800;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: transform 0.2s, background 0.3s;
-        }
-
-        .btn-add:hover {
-            background: #333;
-            transform: translateY(-2px);
-        }
-
-        /* Resumo do Pedido */
-        .resumo-container {
-            width: 100%;
-            max-width: 550px;
-            background: #fff;
-            border-radius: 12px;
-            padding: 2rem;
-            margin-top: 25px;
-            border: 1px solid var(--border);
-            display: none;
-        }
-
-        .total-box {
-            margin-top: 25px;
-            padding: 25px;
-            background: var(--accent);
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        .total-box span {
-            font-weight: 700;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .total-box h3 {
-            font-weight: 900;
-            font-size: 2.2rem;
-            margin: 0;
-            letter-spacing: -1px;
-        }
-
-        .btn-limpar {
-            background: none;
-            color: #ff4444;
-            border: none;
-            width: 100%;
-            margin-top: 20px;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-        }
-
-        .btn-voltar {
-            margin-top: 30px;
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-
-        .mao-obra-box { display: none; margin-top: 10px; }
-
-        @media (max-width: 480px) {
-            .grid-3 { grid-template-columns: 1fr; }
-        }
+        body { padding: 20px; display: flex; flex-direction: column; align-items: center; background: #f4f7f6; }
+        .calc-card { background: #fff; padding: 25px; border-radius: 20px; width: 100%; max-width: 450px; border: 1px solid #eee; }
+        .form-group { margin-bottom: 15px; }
+        input, select { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; background: #fafafa; font-size: 16px; }
+        .grid-inputs { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+        .btn-calc { width: 100%; background: #1a1a1a; color: #fff; padding: 15px; border: none; border-radius: 10px; font-weight: 800; text-transform: uppercase; cursor: pointer; margin-top: 10px; }
+        .resumo { width: 100%; max-width: 450px; margin-top: 20px; }
+        .total-box { background: #ffd200; padding: 20px; border-radius: 15px; text-align: center; margin-top: 10px; }
+        @media (max-width: 400px) { .grid-inputs { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
-<div class="header-adm">
-    <img src="https://i.ibb.co/FLmLhR75/ALFA-PARANA-29.png" alt="Alfa Paraná">
-    <h2>Calculadora Interna</h2>
-    <div class="line"></div>
-</div>
-
-<div class="container">
+<div class="calc-card">
+    <h2 style="text-align:center; font-weight:900; margin-bottom:20px;">CALCULADORA</h2>
     <div class="form-group">
-        <label>Selecione o Produto</label>
+        <label>Produto</label>
         <select id="produto">
-            <optgroup label="Lonas">
-                <option value="Lona Frontlight 440g S/ Acab.">Lona Front 440g Sem Acab. (R$ 64)</option>
-                <option value="Lona Frontlight 440g C/ Acab.">Lona Front 440g Com Acab. (R$ 74)</option>
-                <option value="Lona Backlight 440g S/ Acab.">Lona Back 440g Sem Acab. (R$ 88)</option>
-                <option value="Lona Backlight 440g C/ Acab.">Lona Back 440g Com Acab. (R$ 98)</option>
-            </optgroup>
-            <optgroup label="Adesivos">
-                <option value="Adesivo Promo">Adesivo Promo (R$ 64)</option>
-                <option value="Adesivo Perfurado">Adesivo Perfurado (R$ 84)</option>
-                <option value="Adesivo Blackout">Adesivo Blackout (R$ 82)</option>
-                <option value="Adesivo Premium (Oracal/3M)">Adesivo Premium (R$ 140)</option>
-                <option value="Adesivo Promo + Corte">Adesivo Promo + Corte (R$ 94)</option>
-                <option value="Adesivo Promo + Laminação">Adesivo Promo + Laminação (R$ 110)</option>
-                <option value="Adesivo Promo + Lam. + Corte">Adesivo Promo + Lam. + Corte (R$ 126)</option>
-                <option value="Adesivo Blackout + Laminação">Adesivo Blackout + Laminação (R$ 106)</option>
-                <option value="Adesivo Premium + Laminação">Adesivo Premium + Laminação (R$ 240)</option>
-            </optgroup>
+            <option value="64">Lona Front 440g (R$ 64)</option>
+            <option value="74">Lona Front c/ Acab. (R$ 74)</option>
+            <option value="84">Adesivo Perfurado (R$ 84)</option>
+            <option value="110">Adesivo c/ Laminação (R$ 110)</option>
         </select>
     </div>
-
-    <div class="unit-selector">
-        <label><input type="radio" name="unit" value="cm" checked> <span>CM</span></label>
-        <label><input type="radio" name="unit" value="m"> <span>METROS</span></label>
+    <div class="grid-inputs">
+        <input type="number" id="larg" placeholder="Larg.">
+        <input type="number" id="alt" placeholder="Alt.">
+        <input type="number" id="qtd" value="1">
     </div>
-
-    <div class="grid-3">
-        <div class="form-group"><label>Largura</label><input type="number" id="largura" step="0.01" placeholder="0"></div>
-        <div class="form-group"><label>Altura</label><input type="number" id="altura" step="0.01" placeholder="0"></div>
-        <div class="form-group"><label>Qtd</label><input type="number" id="quantidade" value="1"></div>
-    </div>
-
-    <div class="checkbox-row">
-        <label class="checkbox-card">
-            <input type="checkbox" id="checkFachada"> 🏗️ Estrutura de Metalon
-        </label>
-
-        <label class="checkbox-card">
-            <input type="checkbox" id="checkMaoObra" onchange="toggleMaoObra()"> 👷 Incluir Mão de Obra
-        </label>
-        
-        <div id="campoMaoObra" class="mao-obra-box">
-            <input type="number" id="valorMaoObra" placeholder="Valor da Mão de Obra (R$)">
-        </div>
-    </div>
-
-    <button class="btn-add" onclick="adicionarItem()">Adicionar ao Orçamento</button>
+    <button class="btn-calc" onclick="calcular()">Adicionar Item</button>
 </div>
 
-<div class="resumo-container" id="resumo-box">
-    <div id="lista-itens"></div>
-    
+<div class="resumo" id="resumo" style="display:none;">
+    <div id="itens"></div>
     <div class="total-box">
-        <span>Valor Estimado Total</span>
-        <h3 id="valor-total-geral">R$ 0,00</h3>
+        <small>TOTAL ESTIMADO</small>
+        <h3 id="total-val">R$ 0,00</h3>
     </div>
-    
-    <button class="btn-limpar" onclick="limparPedido()">Limpar tudo e recomeçar</button>
+    <button onclick="location.reload()" style="width:100%; background:none; border:none; color:red; margin-top:10px; cursor:pointer;">Limpar Tudo</button>
 </div>
 
-<a href="index.html" class="btn-voltar">← Voltar para a página inicial</a>
+<a href="index.html" style="margin-top:30px; color:#666; text-decoration:none; font-size:0.8rem;">← Voltar ao Site</a>
 
 <script>
-    const TAXA_COLETA = 80.00;
-    const PRECO_BARRA_METALON = 115.00;
-    const TABELA_PRECOS = {
-        "Lona Frontlight 440g S/ Acab.": 64, "Lona Frontlight 440g C/ Acab.": 74,
-        "Lona Backlight 440g S/ Acab.": 88, "Lona Backlight 440g C/ Acab.": 98,
-        "Adesivo Promo": 64, "Adesivo Perfurado": 84, "Adesivo Blackout": 82,
-        "Adesivo Premium (Oracal/3M)": 140, "Adesivo Promo + Corte": 94,
-        "Adesivo Promo + Laminação": 110, "Adesivo Promo + Lam. + Corte": 126,
-        "Adesivo Blackout + Laminação": 106, "Adesivo Premium + Laminação": 240
-    };
-
-    let itensPedido = [];
-
-    function toggleMaoObra() {
-        document.getElementById('campoMaoObra').style.display = document.getElementById('checkMaoObra').checked ? 'block' : 'none';
-    }
-
-    function adicionarItem() {
-        const prod = document.getElementById('produto').value;
-        const unit = document.querySelector('input[name="unit"]:checked').value;
-        let largI = parseFloat(document.getElementById('largura').value) || 0;
-        let altI = parseFloat(document.getElementById('altura').value) || 0;
-        const qtd = parseInt(document.getElementById('quantidade').value) || 1;
-        const eFachada = document.getElementById('checkFachada').checked;
-        const vMaoObra = parseFloat(document.getElementById('valorMaoObra').value) || 0;
-
-        if (largI <= 0 || altI <= 0) {
-            alert("Por favor, insira as dimensões.");
-            return;
+    let total = 0;
+    function calcular() {
+        const p = parseFloat(document.getElementById('produto').value);
+        const l = parseFloat(document.getElementById('larg').value) || 0;
+        const a = parseFloat(document.getElementById('alt').value) || 0;
+        const q = parseInt(document.getElementById('qtd').value) || 1;
+        
+        if(l > 0 && a > 0) {
+            let valor = (l * a / 10000) * p * q;
+            total += valor;
+            document.getElementById('resumo').style.display = 'block';
+            document.getElementById('itens').innerHTML += `<p style="border-bottom:1px solid #eee; padding:5px 0;">Item adicionado: R$ ${valor.toFixed(2)}</p>`;
+            document.getElementById('total-val').innerText = "R$ " + (total + 80).toLocaleString('pt-br',{minimumFractionDigits:2});
         }
-
-        let largM = (unit === "cm") ? largI / 100 : largI;
-        let altM = (unit === "cm") ? altI / 100 : altI;
-        
-        let valorMaterial = (largM * altM) * TABELA_PRECOS[prod] * qtd;
-        let barras = eFachada ? Math.ceil(((largM + altM) * 2) * qtd / 6) : 0;
-
-        itensPedido.push({ 
-            prod, 
-            medida: `${largI}x${altI}${unit}`, 
-            valorFinal: valorMaterial + (barras * PRECO_BARRA_METALON) + vMaoObra, 
-            qtd 
-        });
-        
-        atualizarInterface();
-        document.getElementById('largura').value = '';
-        document.getElementById('altura').value = '';
     }
-
-    function atualizarInterface() {
-        const listaDiv = document.getElementById('lista-itens');
-        let subtotal = 0;
-        listaDiv.innerHTML = "";
-
-        itensPedido.forEach((item, i) => {
-            subtotal += item.valorFinal;
-            listaDiv.innerHTML += `
-                <div style="border-bottom: 1px solid #eee; padding: 15px 0; display: flex; justify-content: space-between; align-items: center;">
-                    <div>
-                        <span style="font-weight: 900; font-size: 0.9rem; color: #1a1a1a;">${item.qtd}x ${item.prod}</span><br>
-                        <span style="font-size: 0.8rem; color: #888;">${item.medida} — R$ ${item.valorFinal.toLocaleString('pt-br',{minimumFractionDigits:2})}</span>
-                    </div>
-                    <button onclick="removerItem(${i})" style="color: #ccc; background: none; border: none; cursor: pointer; font-size: 1.2rem; transition: 0.3s;" onmouseover="this.style.color='#ff4444'" onmouseout="this.style.color='#ccc'">✕</button>
-                </div>`;
-        });
-
-        let totalGeral = subtotal > 0 ? subtotal + TAXA_COLETA : 0;
-        document.getElementById('resumo-box').style.display = itensPedido.length > 0 ? "block" : "none";
-        document.getElementById('valor-total-geral').innerText = `R$ ${totalGeral.toLocaleString('pt-br',{minimumFractionDigits:2})}`;
-    }
-
-    function removerItem(i) { itensPedido.splice(i, 1); atualizarInterface(); }
-    function limparPedido() { itensPedido = []; atualizarInterface(); }
 </script>
 </body>
 </html>
