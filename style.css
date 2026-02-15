@@ -6,7 +6,7 @@ body { background: var(--bg-light); color: #333; font-family: 'Inter', sans-seri
 /* Navbar */
 .navbar { background: #fff; padding: 15px 0; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #eee; }
 .nav-content { display: flex; justify-content: space-between; align-items: center; }
-.nav-logo { height: 60px; }
+.nav-logo { height: 100px; }
 nav a { color: var(--primary); text-decoration: none; margin-left: 20px; font-weight: 700; font-size: 0.85rem; }
 .nav-btn-wa { background: #25d366; color: #fff !important; padding: 8px 15px; border-radius: 5px; }
 
@@ -39,7 +39,7 @@ nav a { color: var(--primary); text-decoration: none; margin-left: 20px; font-we
 /* Footer */
 .footer-clean { background: #fff; padding: 60px 0 20px; border-top: 5px solid var(--accent); }
 .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 30px; padding-bottom: 40px; }
-.footer-logo { height: 50px; margin-bottom: 15px; }
+.footer-logo { height: 100px; margin-bottom: 30px; }
 .footer-bottom { text-align: center; font-size: 0.8rem; color: #999; border-top: 1px solid #eee; padding-top: 20px; }
 
 /* Modal */
@@ -64,4 +64,5 @@ nav a { color: var(--primary); text-decoration: none; margin-left: 20px; font-we
     .nav-content { flex-direction: column; gap: 10px; }
     nav a { margin: 0 10px; }
     .hero-img { order: -1; }
+
 }
