@@ -41,7 +41,7 @@ body {
 }
 .container-header { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
 
-.logo-top { height: 55px; }
+.logo-top { height: 150px; }
 
 .search-container { flex: 1; margin: 0 60px; display: flex; position: relative; }
 .search-container input { 
@@ -120,3 +120,4 @@ body {
     .promo-box h2 { font-size: 2.2rem; }
     .search-container { display: none; }
 }
+
