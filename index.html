@@ -3,109 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alfa Paraná | Soluções Gráficas e Comunicação Visual</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Alfa Paraná | Gráfica Online e Comunicação Visual</title>
+    <link rel="stylesheet" href="style.css?v=2">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<div class="top-bar">ENTREGA RÁPIDA EM PARANAGUÁ, CURITIBA E REGIÃO</div>
+<div class="header-zap-top">
+    ENTREGA RÁPIDA EM PARANAGUÁ, CURITIBA E LITORAL
+</div>
 
-<header class="navbar">
-    <div class="nav-container">
-        <img src="https://i.ibb.co/WNxBwpz2/ALFA-PARANA-33.png" alt="Alfa Paraná" class="nav-logo">
+<header class="main-header">
+    <div class="container-header">
+        <img src="https://i.ibb.co/WNxBwpz2/ALFA-PARANA-33.png" alt="Alfa Paraná" class="logo-top">
         
-        <div class="search-bar">
-            <input type="text" placeholder="O que você precisa imprimir hoje?">
+        <div class="search-container">
+            <input type="text" placeholder="Pesquise por Fachadas, Adesivos, Banners...">
+            <button>🔍</button>
         </div>
 
-        <div class="nav-actions">
-            <a href="#" class="nav-btn-adm" style="font-size: 12px; color: #666; text-decoration: none;">Minha Conta</a>
-            <a href="https://wa.me/5541995022336" class="btn-orcamento">WHATSAPP</a>
+        <div class="user-actions">
+            <a href="https://wa.me/5541995022336" class="btn-zap">WHATSAPP</a>
         </div>
     </div>
 </header>
 
-<div class="cat-menu">
-    <div class="cat-container">
-        <span>Fachadas</span>
-        <span>Adesivagem</span>
-        <span>Banners</span>
-        <span>Letra Caixa</span>
-        <span>Brindes</span>
-        <span>Projetos Especiais</span>
+<nav class="sub-menu">
+    <div class="container-header">
+        <a href="#servicos">FACHADAS</a>
+        <a href="#servicos">ADESIVAGEM</a>
+        <a href="#servicos">BANNERS</a>
+        <a href="#servicos">LETRA CAIXA</a>
+        <a href="#servicos">BRINDES</a>
     </div>
-</div>
+</nav>
 
-<section class="hero-banner">
-    <div class="hero-grid">
-        <div class="main-promo">
-            <div>
-                <h2 style="font-size: 40px; margin-bottom: 10px;">COMUNICAÇÃO VISUAL</h2>
-                <p style="font-size: 18px; opacity: 0.8;">Qualidade profissional para sua empresa brilhar.</p>
-                <button style="margin-top: 20px; padding: 15px 30px; background: var(--accent); border:none; font-weight: bold; cursor:pointer;">VER PROJETOS</button>
-            </div>
+<section class="banner-principal">
+    <div class="promo-box">
+        <h2>SOLUÇÕES EM COMUNICAÇÃO VISUAL</h2>
+        <p>Qualidade de impressão digital e acabamento profissional.</p>
+        <button>VER PROJETOS</button>
+    </div>
+</section>
+
+<section id="servicos" class="vitrine">
+    <h2 class="title-section">DESTAQUES DA SEMANA</h2>
+    <div class="grid-produtos">
+        <div class="card">
+            <img src="https://i.ibb.co/m5w9sTK3/54.png" alt="Fachada">
+            <h3>Fachada em ACM</h3>
+            <p>Durabilidade e elegância para sua loja</p>
+            <span class="btn-comprar">SOLICITAR COTAÇÃO</span>
         </div>
-        <div class="side-promo">
-            <h3>Calculadora de Projetos</h3>
-            <p style="font-size: 13px; margin: 10px 0;">Acesse nosso painel para orçamentos rápidos.</p>
-            <button onclick="verificarSenha()" style="background: #000; color: #fff; border:none; padding: 10px; cursor:pointer;">ACESSAR PAINEL</button>
+        <div class="card">
+            <img src="https://i.ibb.co/39K1Pk9S/53.png" alt="Adesivo">
+            <h3>Envelopamento de Frota</h3>
+            <p>Sua marca em movimento</p>
+            <span class="btn-comprar">SOLICITAR COTAÇÃO</span>
+        </div>
+        <div class="card">
+            <img src="https://i.ibb.co/cKBF25Gm/52.png" alt="Banner">
+            <h3>Banners e Lonas</h3>
+            <p>Impressão de alta resolução</p>
+            <span class="btn-comprar">SOLICITAR COTAÇÃO</span>
         </div>
     </div>
 </section>
 
-<div class="section-title">SERVIÇOS EM DESTAQUE</div>
-
-<section class="product-grid">
-    <div class="product-card">
-        <img src="https://i.ibb.co/m5w9sTK3/54.png" alt="Fachadas">
-        <h3>Fachadas em ACM</h3>
-        <p>Estrutura completa e instalação</p>
-        <a href="https://wa.me/5541995022336" class="btn-orcamento" style="display: block; margin: 0 15px;">COTAR AGORA</a>
-    </div>
-    <div class="product-card">
-        <img src="https://i.ibb.co/39K1Pk9S/53.png" alt="Adesivos">
-        <h3>Adesivagem de Frotas</h3>
-        <p>Vinis de alta durabilidade</p>
-        <a href="https://wa.me/5541995022336" class="btn-orcamento" style="display: block; margin: 0 15px;">COTAR AGORA</a>
-    </div>
-    <div class="product-card">
-        <img src="https://i.ibb.co/cKBF25Gm/52.png" alt="Lonas">
-        <h3>Banners e Lonas</h3>
-        <p>Impressão digital 1440dpi</p>
-        <a href="https://wa.me/5541995022336" class="btn-orcamento" style="display: block; margin: 0 15px;">COTAR AGORA</a>
-    </div>
-    <div class="product-card">
-        <img src="https://i.ibb.co/5ydj1cv/51.png" alt="Letras">
-        <h3>Letras Caixa</h3>
-        <p>Aço inox, PVC ou Galvanizado</p>
-        <a href="https://wa.me/5541995022336" class="btn-orcamento" style="display: block; margin: 0 15px;">COTAR AGORA</a>
-    </div>
-</section>
-
-<footer class="footer">
-    <div class="footer-grid">
-        <div class="footer-col">
-            <img src="https://i.ibb.co/WNxBwpz2/ALFA-PARANA-33.png" style="height: 80px;" alt="">
-            <p>Sua parceira em impressão e comunicação visual.</p>
-        </div>
-        <div class="footer-col">
-            <h4>INSTITUCIONAL</h4>
-            <li>Sobre Nós</li>
-            <li>Portfólio</li>
-            <li>Localização</li>
-        </div>
-        <div class="footer-col">
-            <h4>ATENDIMENTO</h4>
-            <p>Seg à Sex: 08:30 - 18:00</p>
+<footer class="footer-zap">
+    <div class="container-header footer-grid">
+        <div class="col">
+            <img src="https://i.ibb.co/WNxBwpz2/ALFA-PARANA-33.png" class="logo-footer">
             <p>(41) 99502-2336</p>
         </div>
-        <div class="footer-col">
-            <h4>PAGAMENTO</h4>
-            <p>Aceitamos Cartões, PIX e Boleto</p>
+        <div class="col">
+            <h4>INSTITUCIONAL</h4>
+            <p>Sobre a Alfa Paraná</p>
+            <p>Portfólio Completo</p>
+        </div>
+        <div class="col">
+            <h4>ATENDIMENTO</h4>
+            <p>Segunda a Sexta</p>
+            <p>08:30 às 18:00</p>
         </div>
     </div>
 </footer>
 
-<script src="script.js"></script>
 </body>
 </html>
