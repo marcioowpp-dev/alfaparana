@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alfa Paraná | Impressão Criativa</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -26,15 +25,15 @@
     <section class="hero-light">
         <div class="container hero-grid">
             <div class="hero-text reveal">
-                <span class="badge-tech">Especialistas em Marcas</span>
-                <h1>IMPRESSÃO<br><span class="highlight">CRIATIVA</span></h1>
-                <p>Elevando o padrão da comunicação visual em <strong>Paranaguá e Região.</strong> Tecnologia de ponta para resultados extraordinários.</p>
+                <span class="badge-tech" style="border:1px solid #ffd200; color:#ffd200; padding:5px 15px; border-radius:50px; font-size:0.7rem;">PROJETOS ESPECIAIS</span>
+                <h1>ALFA<br><span class="highlight">PARANÁ</span></h1>
+                <p>Comunicação visual de alto impacto para marcas que buscam excelência. Atendimento em <strong>Paranaguá e Curitiba.</strong></p>
                 <div class="hero-btns">
-                    <a href="https://wa.me/5541995022336" target="_blank" class="btn-main">SOLICITAR ORÇAMENTO</a>
+                    <a href="https://wa.me/5541995022336" target="_blank" class="btn-main">ORÇAMENTO VIA WHATSAPP</a>
                 </div>
             </div>
             <div class="hero-img reveal">
-                <img src="https://i.ibb.co/m5w9sTK3/54.png" alt="Destaque Alfa Paraná" style="width: 100%; border-radius: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
+                <img src="https://i.ibb.co/m5w9sTK3/54.png" alt="Destaque" style="width: 100%; border-radius: 40px; box-shadow: 0 30px 60px rgba(0,0,0,0.5);">
             </div>
         </div>
     </section>
@@ -47,19 +46,19 @@
             </div>
             <div class="services-grid">
                 <div class="service-card reveal">
-                    <div class="icon-box">🚩</div>
-                    <h3>COMUNICAÇÃO VISUAL</h3>
-                    <p>Projetos de fachadas em ACM, letras caixa, luminosos e sinalização externa.</p>
+                    <span class="icon-box">🚩</span>
+                    <h3>FACHADAS EM ACM</h3>
+                    <p>Estruturas em metalon, letras caixa e acabamento de alto padrão.</p>
                 </div>
                 <div class="service-card reveal">
-                    <div class="icon-box">💎</div>
-                    <h3>IMPRESSÃO DIGITAL</h3>
-                    <p>Adesivagem de frotas, vitrines, banners de grandes formatos e rótulos.</p>
+                    <span class="icon-box">💎</span>
+                    <h3>ADESIVAGEM</h3>
+                    <p>Frotas, vitrines e sinalização interna com recorte especial.</p>
                 </div>
                 <div class="service-card reveal">
-                    <div class="icon-box">🎨</div>
-                    <h3>DESIGN & ARTE</h3>
-                    <p>Desenvolvimento de projetos visuais estratégicos e artes gráficas.</p>
+                    <span class="icon-box">🎨</span>
+                    <h3>LONAS E BANNERS</h3>
+                    <p>Impressão digital de grandes formatos com cores vibrantes.</p>
                 </div>
             </div>
         </div>
@@ -68,7 +67,7 @@
     <section id="portfolio" class="section-padding">
         <div class="container">
             <div class="section-header reveal">
-                <h2>PROJETOS RECENTES</h2>
+                <h2>PORTFÓLIO</h2>
                 <div class="line-accent"></div>
             </div>
             <div class="portfolio-grid" id="portfolio-grid">
@@ -100,38 +99,35 @@
 </main>
 
 <footer class="footer-clean">
-    <div class="container">
-        <div class="footer-top">
-            <div class="footer-brand reveal">
-                <img src="https://i.ibb.co/WNxBwpz2/ALFA-PARANA-33.png" alt="Alfa Paraná" class="footer-logo">
-                <p><strong>(41) 99502-2336</strong> | Paranaguá e Curitiba</p>
-                <p>alfaparana.png@gmail.com</p>
-            </div>
-            <div class="footer-links">
-                <h4>SERVIÇOS</h4>
-                <ul><li>Fachadas</li><li>Banners</li><li>Adesivos</li></ul>
-            </div>
-            <div class="footer-hours">
-                <h4>HORÁRIOS</h4>
-                <p>Segunda a Sexta: 08:30 às 12:00 | 13:30 às 18:00</p>
-            </div>
+    <div class="container footer-top">
+        <div class="footer-brand">
+            <img src="https://i.ibb.co/WNxBwpz2/ALFA-PARANA-33.png" alt="Alfa Paraná" class="footer-logo">
+            <p><strong>(41) 99502-2336</strong><br>alfaparana.png@gmail.com</p>
         </div>
-        <div class="footer-bottom"><p>© 2026 Alfa Paraná. Todos os direitos reservados.</p></div>
+        <div>
+            <h4>LOCALIZAÇÃO</h4>
+            <p>Paranaguá e Curitiba - PR</p>
+        </div>
+        <div>
+            <h4>HORÁRIOS</h4>
+            <p>Segunda a Sexta<br>08:30 às 18:00</p>
+        </div>
     </div>
 </footer>
 
 <div id="modal-admin" class="modal-overlay">
     <div class="modal-content">
         <h3>Acesso Restrito</h3>
-        <input type="password" id="input-senha" placeholder="Digite a senha">
-        <div class="modal-buttons">
-            <button onclick="verificarSenha()" class="btn-confirmar">Entrar</button>
-            <button onclick="fecharModal()" class="btn-cancelar">Sair</button>
+        <input type="password" id="input-senha" style="padding:10px; margin:20px 0; border-radius:10px; border:none; text-align:center;" placeholder="Senha">
+        <div style="display:flex; gap:10px;">
+            <button onclick="verificarSenha()" style="background:#ffd200; border:none; padding:10px 20px; border-radius:10px; font-weight:900; cursor:pointer; flex:1;">ENTRAR</button>
+            <button onclick="fecharModal()" style="background:#333; color:#fff; border:none; padding:10px 20px; border-radius:10px; cursor:pointer; flex:1;">SAIR</button>
         </div>
     </div>
 </div>
 
 <div id="zoom-overlay" onclick="this.style.display='none'"><img id="zoom-img"></div>
+
 <script src="script.js"></script>
 </body>
 </html>
