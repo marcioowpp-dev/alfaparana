@@ -15,61 +15,34 @@
             --card: #ffffff;
         }
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        body {
-            background: var(--bg-light);
-            color: var(--primary);
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-        }
-        .header-adm {
-            text-align: center;
-            margin: 20px 0 30px;
-            width: 100%;
-            max-width: 500px;
-        }
+        body { background: var(--bg-light); color: var(--primary); font-family: 'Inter', sans-serif; margin: 0; padding: 15px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+        .header-adm { text-align: center; margin: 20px 0 30px; width: 100%; max-width: 500px; }
         .header-adm img { height: 45px; margin-bottom: 10px; }
         .header-adm h2 { font-weight: 900; font-size: 1.2rem; text-transform: uppercase; margin: 0; letter-spacing: -0.5px; }
-        .container {
-            background: var(--card);
-            padding: 25px;
-            border-radius: 20px;
-            width: 100%;
-            max-width: 500px;
-            border: 1px solid var(--border);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-        }
+        .container { background: var(--card); padding: 25px; border-radius: 20px; width: 100%; max-width: 500px; border: 1px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
         .form-group { margin-bottom: 1.2rem; }
         label { display: block; margin-bottom: 8px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: var(--text-muted); }
-        select, input { width: 100%; padding: 12px 15px; border: 1px solid var(--border); border-radius: 12px; background: #fafafa; font-size: 16px; font-family: 'Inter', sans-serif; outline: none; transition: 0.2s; }
-        select:focus, input:focus { border-color: var(--accent); background: #fff; }
+        select, input { width: 100%; padding: 12px 15px; border: 1px solid var(--border); border-radius: 12px; background: #fafafa; font-size: 16px; font-family: 'Inter', sans-serif; outline: none; }
         .grid-inputs { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 15px; }
         .unit-selector { display: flex; background: #eee; padding: 4px; border-radius: 12px; margin-bottom: 20px; }
-        .unit-selector label { flex: 1; margin: 0; cursor: pointer; }
+        .unit-selector label { flex: 1; margin: 0; }
         .unit-selector input { display: none; }
-        .unit-selector span { display: block; padding: 8px; text-align: center; border-radius: 10px; font-weight: 700; font-size: 0.8rem; color: #888; transition: 0.3s; }
-        .unit-selector input:checked + span { background: var(--accent); color: var(--primary); box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-        .checkbox-card { background: #fff; padding: 15px; border-radius: 12px; display: flex; align-items: center; gap: 12px; border: 1px solid var(--border); margin-bottom: 10px; cursor: pointer; font-size: 0.9rem; font-weight: 600; transition: 0.2s; }
-        .checkbox-card:active { transform: scale(0.98); }
-        .btn-add { width: 100%; background: var(--primary); color: #fff; padding: 16px; border: none; border-radius: 12px; font-weight: 800; text-transform: uppercase; margin-top: 10px; cursor: pointer; transition: 0.2s; }
-        .btn-add:active { transform: scale(0.96); opacity: 0.9; }
-        .resumo-container { width: 100%; max-width: 500px; margin-top: 20px; display: none; animation: slideUp 0.3s ease-out; }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .item-adicionado { background: #fff; padding: 15px; border-radius: 15px; border: 1px solid var(--border); margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
-        .total-card { background: var(--accent); padding: 25px; border-radius: 20px; text-align: center; margin-top: 15px; box-shadow: 0 10px 25px rgba(255, 210, 0, 0.3); }
-        .total-card small { font-weight: 700; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 1px; color: rgba(0,0,0,0.5); }
-        .total-card h3 { font-size: 2.2rem; margin: 5px 0 0; font-weight: 900; color: var(--primary); }
-        .btn-limpar { width: 100%; background: none; border: none; color: #ff4444; padding: 15px; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; cursor: pointer; margin-top: 10px; }
+        .unit-selector span { display: block; padding: 8px; text-align: center; border-radius: 10px; cursor: pointer; font-weight: 700; font-size: 0.8rem; color: #888; }
+        .unit-selector input:checked + span { background: var(--accent); color: var(--primary); }
+        .checkbox-card { background: #fff; padding: 15px; border-radius: 12px; display: flex; align-items: center; gap: 12px; border: 1px solid var(--border); margin-bottom: 10px; cursor: pointer; font-size: 0.9rem; font-weight: 600; }
+        .btn-add { width: 100%; background: var(--primary); color: #fff; padding: 16px; border: none; border-radius: 12px; font-weight: 800; text-transform: uppercase; margin-top: 10px; cursor: pointer; }
+        .resumo-container { width: 100%; max-width: 500px; margin-top: 20px; display: none; }
+        .item-adicionado { background: #fff; padding: 15px; border-radius: 15px; border: 1px solid var(--border); margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
+        .total-card { background: var(--accent); padding: 25px; border-radius: 20px; text-align: center; margin-top: 15px; }
+        .total-card small { font-weight: 700; text-transform: uppercase; font-size: 0.7rem; }
+        .total-card h3 { font-size: 2.2rem; margin: 5px 0 0; font-weight: 900; }
+        .btn-limpar { width: 100%; background: none; border: none; color: #ff4444; padding: 15px; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; cursor: pointer; }
         .btn-voltar { margin: 20px 0; color: var(--text-muted); text-decoration: none; font-size: 0.8rem; font-weight: 600; }
     </style>
 </head>
 <body>
     <div class="header-adm">
-        <img src="https://i.ibb.co/FLmLhR75/ALFA-PARANA-29.png" alt="Alfa Paraná">
+        <img src="https://i.ibb.co/WNxBwpz2/ALFA-PARANA-33.png" alt="Alfa Paraná">
         <h2>Calculadora Interna</h2>
     </div>
 
@@ -108,9 +81,9 @@
             <input type="checkbox" id="checkMaoObra" onchange="document.getElementById('vMao').style.display=this.checked?'block':'none'"> 👷 Mão de Obra
         </label>
         
-        <input type="number" id="vMao" style="display:none; margin-bottom:15px;" placeholder="Valor da Mão de Obra R$">
+        <input type="number" id="vMao" style="display:none; margin-bottom:15px;" placeholder="Valor R$">
 
-        <button class="btn-add" onclick="adicionarItem()">Adicionar ao Orçamento</button>
+        <button class="btn-add" onclick="adicionarItem()">Adicionar</button>
     </div>
 
     <div class="resumo-container" id="resumo-box">
@@ -119,7 +92,7 @@
             <small>Total do Pedido</small>
             <h3 id="valor-total-geral">R$ 0,00</h3>
         </div>
-        <button class="btn-limpar" onclick="limparPedido()">Limpar Pedido</button>
+        <button class="btn-limpar" onclick="limparPedido()">Limpar Tudo</button>
     </div>
 
     <a href="index.html" class="btn-voltar">← Voltar ao Site</a>
@@ -128,11 +101,8 @@
         const TAXA_COLETA = 80.00;
         const PRECO_BARRA_METALON = 115.00;
         const TABELA = {
-            "Lona Frontlight 440g S/ Acab.": 64,
-            "Lona Frontlight 440g C/ Acab.": 74,
-            "Adesivo Promo": 64,
-            "Adesivo Perfurado": 84,
-            "Adesivo Promo + Laminação": 110
+            "Lona Frontlight 440g S/ Acab.": 64, "Lona Frontlight 440g C/ Acab.": 74,
+            "Adesivo Promo": 64, "Adesivo Perfurado": 84, "Adesivo Promo + Laminação": 110
         };
 
         let pedido = [];
